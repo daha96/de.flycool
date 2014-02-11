@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">hWARN</string>
+    <string name="app_name">FlyCool</string>
     <string name="action_settings">Settings</string>
     <string name="pref_title_altitudes">Altitudes</string>
     <string name="pref_title_min_altitude_gnd">min altitude above GND</string>
