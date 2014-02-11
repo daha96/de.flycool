@@ -1,5 +1,10 @@
 package de.flycool;
 
+import java.util.Date;
+
+import de.flycool.FlyingObject.FlyAction;
+import de.flycool.FlyingObject.Popup;
+import de.flycool.FlyingObject.WarnLevel;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,9 +26,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity implements LocationListener, FlyingObjectPopupListener {
 
 	SharedPreferences sharedPref;
+	
+	Date lastGndUpdateTime = new Date(0);
 
 	TextView latitudeTextView;
 	TextView longitudeTextView;
@@ -47,7 +54,7 @@ public class MainActivity extends Activity implements LocationListener {
 		return location;
 	}
 
-	GetElevationFromGoogleMapsAsyncTask getElevationFromGoogleMapsAsyncTask;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+		// Aufforderung, das GPS einzuschalten
 		if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -91,6 +99,8 @@ public class MainActivity extends Activity implements LocationListener {
 			builder.show();
 		}
 
+		flyingObject = new FlyingObject(sharedPref, this);
+		
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				0, this);
 	}
@@ -122,43 +132,113 @@ public class MainActivity extends Activity implements LocationListener {
 		latitudeTextView.setText(String.format("%f", location.getLatitude()));
 		longitudeTextView.setText(String.format("%f", location.getLongitude()));
 
-		getElevationFromGoogleMapsAsyncTask = new GetElevationFromGoogleMapsAsyncTask();
-		getElevationFromGoogleMapsAsyncTask.execute(this);
+		if ((new Date().getTime() - lastGndUpdateTime.getTime()) >= Integer
+				.parseInt(sharedPref.getString(
+						"pref_key_elevation_update_timespan", "0"))) {
+			GetElevationFromGoogleMapsAsyncTask getElevationFromGoogleMapsAsyncTask = new GetElevationFromGoogleMapsAsyncTask();
+			getElevationFromGoogleMapsAsyncTask.execute(this);
+		}
 
 		refreshMslAltitude(location.getAltitude());
 	}
 
+	@Override
+	public void onFlyingObjectPopupChanged(Popup popup) {
+		
+		boolean enabled;// = false;
+		String message;//; = "";
+		// Alles OK
+		if (popup == null)
+		{
+			enabled = false;
+			message = "";
+		}
+		else
+		{
+			// Warnung
+			if (popup.getWarnLevel() == WarnLevel.warn)
+			{
+				if (popup.getFlyAction() == FlyAction.climb)
+				{
+					enabled = true;
+					message = getResources().getString(R.string.climb);					
+				}
+				else
+				{
+					enabled = true;
+					message = getResources().getString(R.string.sink);
+				}				
+			}
+			// Info
+			else
+			{
+				if (popup.getFlyAction() == FlyAction.climb)
+				{
+					enabled = true;
+					message = getResources().getString(R.string.climb);
+				}
+				else
+				{
+					enabled = true;
+					message = getResources().getString(R.string.sink);
+				}
+			}
+		}
+		
+		
+
+		if (enabled)
+			warnFrame.setVisibility(View.VISIBLE);
+		else
+			warnFrame.setVisibility(View.GONE);
+
+		warnMessage.setText(message);
+		
+		
+	}
+
 	void refreshGndAltitude(double gndElevation) {
+		
+		flyingObject.setElevation(gndElevation);/*
+	//	refreshPopup();
 		int minAltitudeGnd = Integer.parseInt(sharedPref.getString(
 				"pref_key_min_altitude_gnd", "50"));
 		minAltitudeGndTextView.setText("> "
 				+ String.format("%d", minAltitudeGnd) + " m");
-		
-		mslAltitudeGndTextView.setText(String.format("%.2f", gndElevation) + " m");
-		altitudeGndTextView.setText(String.format("%.2f", location.getAltitude() - gndElevation) + " m");
-		
+		*/
+		mslAltitudeGndTextView.setText(String.format("%.2f", flyingObject.getElevation()) + " m");
+		altitudeGndTextView.setText(String.format("%.2f", flyingObject.getAttitudeAboveGnd()) + " m");
+		/*
 		if ((location.getAltitude() - gndElevation) < minAltitudeGnd)
 			setTooLow(true);
 		else
-			setTooLow(false);
+			setTooLow(false);*/
 	}
 
 	void refreshMslAltitude(double altitudeMsl) {
+		flyingObject.setAttitudeAboveMsl(altitudeMsl);/*
+	//	refreshPopup();
 		int maxAltitudeMsl = Integer.parseInt(sharedPref.getString(
 				"pref_key_max_altitude_msl", "2950"));
 		maxAltitudeMslTextView.setText("< "
 				+ String.format("%d", maxAltitudeMsl) + " m");
-		
-		altitudeMslTextView.setText(String.format("%.2f", altitudeMsl) + " m");
-
+		*/
+		altitudeMslTextView.setText(String.format("%.2f", flyingObject.getAttitudeAboveMsl()) + " m");
+/*
 		if (altitudeMsl > maxAltitudeMsl)
 			setTooHigh(true);
 		else
-			setTooHigh(false);
+			setTooHigh(false);*/
 	}
+	
+	FlyingObject flyingObject;
 
-	void refreshWarnFrame() {
-		boolean enabled = false;
+/*	void refreshPopup() {
+		
+		
+		
+		
+	/*	boolean enabled = false;
 		String message = "";
 
 		if (tooHigh) {
@@ -176,23 +256,23 @@ public class MainActivity extends Activity implements LocationListener {
 		else
 			warnFrame.setVisibility(View.GONE);
 
-		warnMessage.setText(message);
-	}
-
+		warnMessage.setText(message);*
+	}*/
+/*
 	boolean tooLow = false;
 
 	void setTooLow(boolean value) {
 		tooLow = value;
-		refreshWarnFrame();
+		refreshPopup();
 	}
 
 	boolean tooHigh = false;
 
 	void setTooHigh(boolean value) {
 		tooHigh = value;
-		refreshWarnFrame();
+		refreshPopup();
 	}
-
+*/
 	@Override
 	public void onProviderDisabled(String provider) {
 		Log.d("Latitude", "disable");
