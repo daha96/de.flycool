@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-<!--     <PreferenceCategory
-        android:key="pref_key_altitudes"
-        android:title="@string/pref_title_altitudes" >
-        <EditTextPreference
-            android:defaultValue="2950"
-            android:inputType="number"
-            android:key="pref_key_max_altitude_msl"
-            android:summary="@string/pref_summary_max_altitude_msl"
-            android:title="@string/pref_title_max_altitude_msl" />
-        <EditTextPreference
-            android:defaultValue="2950"
-            android:inputType="number"
-            android:key="pref_key_max_altitude_msl"
-            android:summary="@string/pref_summary_max_altitude_msl"
-            android:title="@string/pref_title_max_altitude_msl" />
-    </PreferenceCategory>
- -->
     <PreferenceScreen
         android:key="pref_key_warnings"
         android:title="@string/pref_title_warnings" >
@@ -58,11 +41,6 @@
             </EditTextPreference>
         </PreferenceCategory>
     </PreferenceScreen>
-    
-    
-    
-    
-    
     <PreferenceScreen
         android:key="pref_key_informations"
         android:title="@string/pref_title_informations" >
@@ -103,19 +81,17 @@
             </EditTextPreference>
         </PreferenceCategory>
     </PreferenceScreen>
-    
-    
+
     <PreferenceCategory
-            android:key="pref_key_elevation_update"
-            android:title="@string/pref_title_elevation_update" >
-            <EditTextPreference
-                android:defaultValue="1000"
-                android:inputType="number"
-                android:key="pref_key_elevation_update_timespan"
-                android:summary="@string/pref_summary_elevation_update_timespan"
-                android:title="@string/pref_title_elevation_update_timespan" >
-            </EditTextPreference>
-        </PreferenceCategory>
-    
+        android:key="pref_key_elevation_update"
+        android:title="@string/pref_title_elevation_update" >
+        <EditTextPreference
+            android:defaultValue="1000"
+            android:inputType="number"
+            android:key="pref_key_elevation_update_timespan"
+            android:summary="@string/pref_summary_elevation_update_timespan"
+            android:title="@string/pref_title_elevation_update_timespan" >
+        </EditTextPreference>
+    </PreferenceCategory>
 
 </PreferenceScreen>

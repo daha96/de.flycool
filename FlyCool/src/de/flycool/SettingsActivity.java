@@ -3,6 +3,12 @@ package de.flycool;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
+/**
+ * Stellt die Aktivität für die Einstellungen da
+ * 
+ * @author daniel
+ * 
+ */
 public class SettingsActivity extends PreferenceActivity {
 
 	@Override

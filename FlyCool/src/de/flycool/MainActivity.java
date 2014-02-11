@@ -29,11 +29,17 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements LocationListener, FlyingObjectPopupListener {
+/**
+ * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist der
+ * Einstiegspunkt der App
+ * 
+ * @author daniel
+ * 
+ */
+public class MainActivity extends Activity implements LocationListener,
+		FlyingObjectPopupListener {
 
 	SharedPreferences sharedPref;
-	
-	Date lastGndUpdateTime = new Date(0);
 
 	TextView latitudeTextView;
 	TextView longitudeTextView;
@@ -53,19 +59,28 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 
 	Location location = null;
 
-	public Location getLocation() {
-		return location;
-	}
-	
+	Date lastGndUpdateTime = new Date(0);
+
+	FlyingObject flyingObject;
+
 	NotificationManager notificationManager;
-	
+
 	Notification climbWarningNotification;
 	Notification sinkWarningNotification;
 	Notification climbInformationNotification;
 	Notification sinkInformationNotification;
 
-	
+	/**
+	 * 
+	 * @return Die aktuelle Location (wenn nicht vorhanden null)
+	 */
+	public Location getLocation() {
+		return location;
+	}
 
+	/**
+	 * Läd die Aktivität und verbindet den LocationListener
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,11 +102,7 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		warnFrame = (FrameLayout) findViewById(R.id.warnFrame);
 		warnFrame.setBackgroundColor(Color.RED);
 		warnMessage = (TextView) findViewById(R.id.warnMessage);
-		
-		
-		
-		
-		
+
 		climbWarningNotification = new NotificationCompat.Builder(this)
 				.setContentTitle(
 						getResources().getString(
@@ -131,15 +142,8 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 								R.string.sinkInformationNotificationText))
 				.setAutoCancel(false)
 				.setSmallIcon(R.drawable.ic_sink_information).build();
-	
-		notificationManager =
-		    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-		
-		
-		
-		
-		
+		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -163,15 +167,14 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		}
 
 		flyingObject = new FlyingObject(sharedPref, this);
-		
+
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				0, this);
 	}
-	
-	
-	
-	
 
+	/**
+	 * Erstellt das Menü
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -179,6 +182,9 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		return true;
 	}
 
+	/**
+	 * Wird aufgerufen, wenn ein Menüeintrag ausgewählt wurde
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -191,6 +197,10 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		}
 	}
 
+	/**
+	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und aktualisiert
+	 * die komplette App
+	 */
 	@Override
 	public void onLocationChanged(Location location) {
 
@@ -209,56 +219,52 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		refreshMslAltitude(location.getAltitude());
 	}
 
+	/**
+	 * Wird aufgerufen, wenn eine neue Benachrichtigung vom FlyingObject
+	 * verfügbar ist und aktualisiert die Benachrichtigungen
+	 */
 	@Override
 	public void onFlyingObjectPopupChanged(Popup popup) {
-		
-		boolean enabled;// = false;
-		String message;//; = "";
+
+		boolean enabled;
+		String message;
+
 		// Alles OK
-		if (popup == null)
-		{
+		if (popup == null) {
 			enabled = false;
 			message = "";
-		}
-		else
-		{
+		} else {
 			notificationManager.cancelAll();
-			
+
 			// Warnung
-			if (popup.getWarnLevel() == WarnLevel.warn)
-			{
-				if (popup.getFlyAction() == FlyAction.climb)
-				{
+			if (popup.getWarnLevel() == WarnLevel.warn) {
+				if (popup.getFlyAction() == FlyAction.climb) {
 					notificationManager.notify(0, climbWarningNotification);
 					enabled = true;
-					message = getResources().getString(R.string.climbWarningNotificationTitle);					
-				}
-				else
-				{
+					message = getResources().getString(
+							R.string.climbWarningNotificationTitle);
+				} else {
 					notificationManager.notify(1, sinkWarningNotification);
 					enabled = true;
-					message = getResources().getString(R.string.sinkWarningNotificationTitle);
-				}				
+					message = getResources().getString(
+							R.string.sinkWarningNotificationTitle);
+				}
 			}
 			// Info
-			else
-			{
-				if (popup.getFlyAction() == FlyAction.climb)
-				{
+			else {
+				if (popup.getFlyAction() == FlyAction.climb) {
 					notificationManager.notify(2, climbInformationNotification);
 					enabled = true;
-					message = getResources().getString(R.string.climbInformationNotificationTitle);
-				}
-				else
-				{
+					message = getResources().getString(
+							R.string.climbInformationNotificationTitle);
+				} else {
 					notificationManager.notify(3, sinkInformationNotification);
 					enabled = true;
-					message = getResources().getString(R.string.sinkInformationNotificationTitle);
+					message = getResources().getString(
+							R.string.sinkInformationNotificationTitle);
 				}
 			}
 		}
-		
-		
 
 		if (enabled)
 			warnFrame.setVisibility(View.VISIBLE);
@@ -266,86 +272,37 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 			warnFrame.setVisibility(View.GONE);
 
 		warnMessage.setText(message);
-		
-		
+
 	}
 
+	/**
+	 * Aktualisiert die Höhe über Grund
+	 * 
+	 * @param gndElevation
+	 */
 	void refreshGndAltitude(double gndElevation) {
-		
-		flyingObject.setElevation(gndElevation);/*
-	//	refreshPopup();
-		int minAltitudeGnd = Integer.parseInt(sharedPref.getString(
-				"pref_key_min_altitude_gnd", "50"));
-		minAltitudeGndTextView.setText("> "
-				+ String.format("%d", minAltitudeGnd) + " m");
-		*/
-		mslAltitudeGndTextView.setText(String.format("%.2f", flyingObject.getElevation()) + " m");
-		altitudeGndTextView.setText(String.format("%.2f", flyingObject.getAttitudeAboveGnd()) + " m");
-		/*
-		if ((location.getAltitude() - gndElevation) < minAltitudeGnd)
-			setTooLow(true);
-		else
-			setTooLow(false);*/
+
+		flyingObject.setElevation(gndElevation);
+		mslAltitudeGndTextView.setText(String.format("%.2f",
+				flyingObject.getElevation())
+				+ " m");
+		altitudeGndTextView.setText(String.format("%.2f",
+				flyingObject.getAttitudeAboveGnd())
+				+ " m");
 	}
 
+	/**
+	 * Aktualisiert die Höhe über dem Meeresspiegel
+	 * 
+	 * @param altitudeMsl
+	 */
 	void refreshMslAltitude(double altitudeMsl) {
-		flyingObject.setAttitudeAboveMsl(altitudeMsl);/*
-	//	refreshPopup();
-		int maxAltitudeMsl = Integer.parseInt(sharedPref.getString(
-				"pref_key_max_altitude_msl", "2950"));
-		maxAltitudeMslTextView.setText("< "
-				+ String.format("%d", maxAltitudeMsl) + " m");
-		*/
-		altitudeMslTextView.setText(String.format("%.2f", flyingObject.getAttitudeAboveMsl()) + " m");
-/*
-		if (altitudeMsl > maxAltitudeMsl)
-			setTooHigh(true);
-		else
-			setTooHigh(false);*/
-	}
-	
-	FlyingObject flyingObject;
-
-/*	void refreshPopup() {
-		
-		
-		
-		
-	/*	boolean enabled = false;
-		String message = "";
-
-		if (tooHigh) {
-			enabled = true;
-			message = getResources().getString(R.string.sink);
-		}
-
-		if (tooLow) {
-			enabled = true;
-			message = getResources().getString(R.string.climb);
-		}
-
-		if (enabled)
-			warnFrame.setVisibility(View.VISIBLE);
-		else
-			warnFrame.setVisibility(View.GONE);
-
-		warnMessage.setText(message);*
-	}*/
-/*
-	boolean tooLow = false;
-
-	void setTooLow(boolean value) {
-		tooLow = value;
-		refreshPopup();
+		flyingObject.setAttitudeAboveMsl(altitudeMsl);
+		altitudeMslTextView.setText(String.format("%.2f",
+				flyingObject.getAttitudeAboveMsl())
+				+ " m");
 	}
 
-	boolean tooHigh = false;
-
-	void setTooHigh(boolean value) {
-		tooHigh = value;
-		refreshPopup();
-	}
-*/
 	@Override
 	public void onProviderDisabled(String provider) {
 		Log.d("Latitude", "disable");
@@ -360,6 +317,4 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		Log.d("Latitude", "status");
 	}
-	
-	
 }

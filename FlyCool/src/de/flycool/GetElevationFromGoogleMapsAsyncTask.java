@@ -16,10 +16,20 @@ import de.flycool.MainActivity;
 import android.location.Location;
 import android.os.AsyncTask;
 
+/**
+ * Ruft die Bodenhöhe an einem Bestimmten Punkt auf der Erdoberfläche ab. Die
+ * Daten stammen von der Google Elevation API
+ * 
+ * @author daniel
+ * 
+ */
 public class GetElevationFromGoogleMapsAsyncTask extends
 		AsyncTask<MainActivity, Void, Double> {
 	MainActivity mainActivity;
 
+	/**
+	 * Startet den Task
+	 */
 	@Override
 	protected Double doInBackground(MainActivity... params) {
 		mainActivity = params[0];
@@ -30,6 +40,13 @@ public class GetElevationFromGoogleMapsAsyncTask extends
 				location.getLongitude());
 	}
 
+	/**
+	 * Ruft die Höhe von der Google Elevation API ab
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 * @return Die Höhe in Metern
+	 */
 	private double getElevationFromGoogleMaps(double latitude, double longitude) {
 		double result = Double.NaN;
 		HttpClient httpClient = new DefaultHttpClient();
@@ -64,6 +81,9 @@ public class GetElevationFromGoogleMapsAsyncTask extends
 		return result;
 	}
 
+	/**
+	 * Teilt der MainActivity die neue Bodenhöhe mit
+	 */
 	protected void onPostExecute(Double elev) {
 		mainActivity.refreshGndAltitude(elev);
 	}
