@@ -25,4 +25,42 @@
     <string name="no_gps_message">GPS is not enabled. Please enable GPS at the settings menu.</string>
     <string name="no_gps_button">OK</string>
 
+    
+    
+    
+    
+       
+    
+    <string name="pref_title_warnings">pref_title_warnings</string>
+    <string name="pref_title_warnings_msl">pref_title_warnings_msl</string>
+    <string name="pref_summary_warnings_msl_min">pref_summary_warnings_msl_min</string>
+    <string name="pref_title_warnings_msl_min">pref_title_warnings_msl_min</string>
+    <string name="pref_summary_warnings_msl_max">pref_summary_warnings_msl_max</string>
+    <string name="pref_title_warnings_msl_max">pref_title_warnings_msl_max</string>
+    <string name="pref_title_warnings_gnd">pref_title_warnings_gnd</string>
+    <string name="pref_summary_warnings_gnd_min">pref_summary_warnings_gnd_min</string>
+    <string name="pref_title_warnings_gnd_min">pref_title_warnings_gnd_min</string>
+    <string name="pref_summary_warnings_gnd_max">pref_summary_warnings_gnd_max</string>
+    <string name="pref_title_warnings_gnd_max">pref_title_warnings_gnd_max</string>
+    
+    
+    
+    
+    <string name="pref_title_informations">pref_title_informations</string>
+    <string name="pref_title_informations_msl">pref_title_informations_msl</string>
+    <string name="pref_summary_informations_msl_min">pref_summary_informations_msl_min</string>
+    <string name="pref_title_informations_msl_min">pref_title_informations_msl_min</string>
+    <string name="pref_summary_informations_msl_max">pref_summary_informations_msl_max</string>
+    <string name="pref_title_informations_msl_max">pref_title_informations_msl_max</string>
+    <string name="pref_title_informations_gnd">pref_title_informations_gnd</string>
+    <string name="pref_summary_informations_gnd_min">pref_summary_informations_gnd_min</string>
+    <string name="pref_title_informations_gnd_min">pref_title_informations_gnd_min</string>
+    <string name="pref_summary_informations_gnd_max">pref_summary_informations_gnd_max</string>
+    <string name="pref_title_informations_gnd_max">pref_title_informations_gnd_max</string>
+    
+    
+   
+    
+    
+    
 </resources>

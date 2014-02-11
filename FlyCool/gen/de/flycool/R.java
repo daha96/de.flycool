@@ -71,11 +71,33 @@ public final class R {
         public static final int no_gps_button=0x7f060015;
         public static final int no_gps_message=0x7f060014;
         public static final int no_gps_title=0x7f060013;
+        public static final int pref_summary_informations_gnd_max=0x7f06002a;
+        public static final int pref_summary_informations_gnd_min=0x7f060028;
+        public static final int pref_summary_informations_msl_max=0x7f060025;
+        public static final int pref_summary_informations_msl_min=0x7f060023;
         public static final int pref_summary_max_altitude_msl=0x7f060006;
         public static final int pref_summary_min_altitude_gnd=0x7f060004;
+        public static final int pref_summary_warnings_gnd_max=0x7f06001f;
+        public static final int pref_summary_warnings_gnd_min=0x7f06001d;
+        public static final int pref_summary_warnings_msl_max=0x7f06001a;
+        public static final int pref_summary_warnings_msl_min=0x7f060018;
         public static final int pref_title_altitudes=0x7f060002;
+        public static final int pref_title_informations=0x7f060021;
+        public static final int pref_title_informations_gnd=0x7f060027;
+        public static final int pref_title_informations_gnd_max=0x7f06002b;
+        public static final int pref_title_informations_gnd_min=0x7f060029;
+        public static final int pref_title_informations_msl=0x7f060022;
+        public static final int pref_title_informations_msl_max=0x7f060026;
+        public static final int pref_title_informations_msl_min=0x7f060024;
         public static final int pref_title_max_altitude_msl=0x7f060005;
         public static final int pref_title_min_altitude_gnd=0x7f060003;
+        public static final int pref_title_warnings=0x7f060016;
+        public static final int pref_title_warnings_gnd=0x7f06001c;
+        public static final int pref_title_warnings_gnd_max=0x7f060020;
+        public static final int pref_title_warnings_gnd_min=0x7f06001e;
+        public static final int pref_title_warnings_msl=0x7f060017;
+        public static final int pref_title_warnings_msl_max=0x7f06001b;
+        public static final int pref_title_warnings_msl_min=0x7f060019;
         public static final int sink=0x7f060011;
     }
     public static final class style {

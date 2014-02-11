@@ -24,5 +24,35 @@
     <string name="no_gps_title">GPS ist deaktiviert</string>
     <string name="no_gps_message">GPS ist nicht aktiviert. Bitte schalten Sie das GPS in den Einstellungen an.</string>
     <string name="no_gps_button">OK</string>
+    
+    
+    
+    
+    <string name="pref_title_warnings">Warnungen</string>
+    <string name="pref_title_warnings_msl">MSL</string>
+    <string name="pref_summary_warnings_msl_min">Minimale Höhe über MSL, unter der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
+    <string name="pref_title_warnings_msl_min">Minimale Höhe über MSL</string>
+    <string name="pref_summary_warnings_msl_max">Maximale Höhe über MSL, über der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
+    <string name="pref_title_warnings_msl_max">Maximale Höhe über MSL</string>
+    <string name="pref_title_warnings_gnd">GND</string>
+    <string name="pref_summary_warnings_gnd_min">Minimale Höhe über GND, unter der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
+    <string name="pref_title_warnings_gnd_min">Minimale Höhe über GND</string>
+    <string name="pref_summary_warnings_gnd_max">Maximale Höhe über GND, über der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
+    <string name="pref_title_warnings_gnd_max">Maximale Höhe über GND</string>
+    
+    
+    
+    
+    <string name="pref_title_informations">Informationen</string>
+    <string name="pref_title_informations_msl">MSL</string>
+    <string name="pref_summary_informations_msl_min">Minimale Höhe über MSL, unter der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
+    <string name="pref_title_informations_msl_min">Minimale Höhe über MSL</string>
+    <string name="pref_summary_informations_msl_max">Maximale Höhe über MSL, über der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
+    <string name="pref_title_informations_msl_max">Maximale Höhe über MSL</string>
+    <string name="pref_title_informations_gnd">GND</string>
+    <string name="pref_summary_informations_gnd_min">Minimale Höhe über GND, unter der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
+    <string name="pref_title_informations_gnd_min">Minimale Höhe über GND</string>
+    <string name="pref_summary_informations_gnd_max">Maximale Höhe über GND, über der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
+    <string name="pref_title_informations_gnd_max">Maximale Höhe über GND</string>
 
 </resources>

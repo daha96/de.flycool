@@ -5,11 +5,11 @@
         android:key="pref_key_altitudes"
         android:title="@string/pref_title_altitudes" >
         <EditTextPreference
-            android:defaultValue="50"
+            android:defaultValue="2950"
             android:inputType="number"
-            android:key="pref_key_min_altitude_gnd"
-            android:summary="@string/pref_summary_min_altitude_gnd"
-            android:title="@string/pref_title_min_altitude_gnd" />
+            android:key="pref_key_max_altitude_msl"
+            android:summary="@string/pref_summary_max_altitude_msl"
+            android:title="@string/pref_title_max_altitude_msl" />
         <EditTextPreference
             android:defaultValue="2950"
             android:inputType="number"
@@ -17,5 +17,95 @@
             android:summary="@string/pref_summary_max_altitude_msl"
             android:title="@string/pref_title_max_altitude_msl" />
     </PreferenceCategory>
+
+    <PreferenceScreen
+        android:key="pref_key_warnings"
+        android:title="@string/pref_title_warnings" >
+        <PreferenceCategory
+            android:key="pref_key_warnings_msl"
+            android:title="@string/pref_title_warnings_msl" >
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_warnings_msl_min"
+                android:summary="@string/pref_summary_warnings_msl_min"
+                android:title="@string/pref_title_warnings_msl_min" >
+            </EditTextPreference>
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_warnings_msl_max"
+                android:summary="@string/pref_summary_warnings_msl_max"
+                android:title="@string/pref_title_warnings_msl_max" >
+            </EditTextPreference>
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:key="pref_key_warnings_gnd"
+            android:title="@string/pref_title_warnings_gnd" >
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_warnings_gnd_min"
+                android:summary="@string/pref_summary_warnings_gnd_min"
+                android:title="@string/pref_title_warnings_gnd_min" >
+            </EditTextPreference>
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_warnings_gnd_max"
+                android:summary="@string/pref_summary_warnings_gnd_max"
+                android:title="@string/pref_title_warnings_gnd_max" >
+            </EditTextPreference>
+        </PreferenceCategory>
+    </PreferenceScreen>
+    
+    
+    
+    
+    
+    <PreferenceScreen
+        android:key="pref_key_informations"
+        android:title="@string/pref_title_informations" >
+        <PreferenceCategory
+            android:key="pref_key_informations_msl"
+            android:title="@string/pref_title_informations_msl" >
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_informations_msl_min"
+                android:summary="@string/pref_summary_informations_msl_min"
+                android:title="@string/pref_title_informations_msl_min" >
+            </EditTextPreference>
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_informations_msl_max"
+                android:summary="@string/pref_summary_informations_msl_max"
+                android:title="@string/pref_title_informations_msl_max" >
+            </EditTextPreference>
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:key="pref_key_informations_gnd"
+            android:title="@string/pref_title_informations_gnd" >
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_informations_gnd_min"
+                android:summary="@string/pref_summary_informations_gnd_min"
+                android:title="@string/pref_title_informations_gnd_min" >
+            </EditTextPreference>
+            <EditTextPreference
+                android:defaultValue=""
+                android:inputType="number"
+                android:key="pref_key_informations_gnd_max"
+                android:summary="@string/pref_summary_informations_gnd_max"
+                android:title="@string/pref_title_informations_gnd_max" >
+            </EditTextPreference>
+        </PreferenceCategory>
+    </PreferenceScreen>
+    
+    
+    
+    
 
 </PreferenceScreen>
