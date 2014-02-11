@@ -12,7 +12,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
-import de.daha.hwarn.MainActivity;
+import de.flycool.MainActivity;
 import android.location.Location;
 import android.os.AsyncTask;
 
