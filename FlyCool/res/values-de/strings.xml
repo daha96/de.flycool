@@ -3,29 +3,19 @@
 
     <string name="app_name">FlyCool</string>
     <string name="action_settings">Einstellungen</string>
- <!--    <string name="pref_title_altitudes">Höhen</string>
-    <string name="pref_title_min_altitude_gnd">minimale Höhe über GND</string>
-    <string name="pref_summary_min_altitude_gnd">Wenn tiefer als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
-    <string name="pref_title_max_altitude_msl">maximale Höhe über MSL</string>
-    <string name="pref_summary_max_altitude_msl">Wenn höher als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
-  -->  <string name="locationLabel">Position</string>
+    <string name="locationLabel">Position</string>
     <string name="latitudeLabel">Breitengrad:</string>
     <string name="longitudeLabel">Längengrad:</string>
     <string name="gndLabel">Höhe über GND</string>
-    <string name="mslAltitudeGndLabel">GND Höhe MSL:</string>  
+    <string name="mslAltitudeGndLabel">GND Höhe MSL:</string>
     <string name="minAltitudeGndLabel">soll:</string>
     <string name="altitudeGndLabel">ist:</string>
     <string name="mslLabel">Höhe über MSL</string>
     <string name="maxAltitudeMslLabel">soll:</string>
     <string name="altitudeMslLabel">ist:</string>
-    
     <string name="no_gps_title">GPS ist deaktiviert</string>
     <string name="no_gps_message">GPS ist nicht aktiviert. Bitte schalten Sie das GPS in den Einstellungen an.</string>
     <string name="no_gps_button">OK</string>
-    
-    
-    
-    
     <string name="pref_title_warnings">Warnungen</string>
     <string name="pref_title_warnings_msl">MSL</string>
     <string name="pref_summary_warnings_msl_min">Minimale Höhe über MSL, unter der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
@@ -37,10 +27,6 @@
     <string name="pref_title_warnings_gnd_min">Minimale Höhe über GND</string>
     <string name="pref_summary_warnings_gnd_max">Maximale Höhe über GND, über der eine Warnung ausgegeben werden soll (leer lassen für keine Warnung)</string>
     <string name="pref_title_warnings_gnd_max">Maximale Höhe über GND</string>
-    
-    
-    
-    
     <string name="pref_title_informations">Informationen</string>
     <string name="pref_title_informations_msl">MSL</string>
     <string name="pref_summary_informations_msl_min">Minimale Höhe über MSL, unter der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
@@ -52,16 +38,10 @@
     <string name="pref_title_informations_gnd_min">Minimale Höhe über GND</string>
     <string name="pref_summary_informations_gnd_max">Maximale Höhe über GND, über der eine Information ausgegeben werden soll (leer lassen für keine Information)</string>
     <string name="pref_title_informations_gnd_max">Maximale Höhe über GND</string>
-
-    
-    
-    
-     <string name="pref_title_elevation_update">GND Update</string>
-      <string name="pref_title_elevation_update_timespan">Zeitspanne zwischen zwei GND Updates</string>
-       <string name="pref_summary_elevation_update_timespan">Zeitspanne zwischen zwei GND Updates in Millisekunden (1 s = 1000 ms)</string>
-    
-    
-       <string name="climbWarningNotificationTitle">!!! STEIGEN !!!</string>
+    <string name="pref_title_elevation_update">GND Update</string>
+    <string name="pref_title_elevation_update_timespan">Zeitspanne zwischen zwei GND Updates</string>
+    <string name="pref_summary_elevation_update_timespan">Zeitspanne zwischen zwei GND Updates in Millisekunden (1 s = 1000 ms)</string>
+    <string name="climbWarningNotificationTitle">!!! STEIGEN !!!</string>
     <string name="climbWarningNotificationText">Steigen Sie sofort !!!</string>
     <string name="sinkWarningNotificationTitle">!!! SINKEN !!!</string>
     <string name="sinkWarningNotificationText">Sinken Sie sofort !!!</string>
@@ -69,6 +49,5 @@
     <string name="climbInformationNotificationText">Bitte steigen Sie</string>
     <string name="sinkInformationNotificationTitle">SINKEN</string>
     <string name="sinkInformationNotificationText">Bitte sinken Sie</string>
-    
-    
+
 </resources>
