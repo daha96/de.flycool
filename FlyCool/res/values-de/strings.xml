@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">hWARN</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="pref_title_altitudes">Höhen</string>
+    <string name="pref_title_min_altitude_gnd">minimale Höhe über GND</string>
+    <string name="pref_summary_min_altitude_gnd">Wenn tiefer als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
+    <string name="pref_title_max_altitude_msl">maximale Höhe über MSL</string>
+    <string name="pref_summary_max_altitude_msl">Wenn höher als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
+    <string name="locationLabel">Position</string>
+    <string name="latitudeLabel">Breitengrad:</string>
+    <string name="longitudeLabel">Längengrad:</string>
+    <string name="gndLabel">Höhe über GND</string>
+    <string name="mslAltitudeGndLabel">GND Höhe MSL:</string>  
+    <string name="minAltitudeGndLabel">soll:</string>
+    <string name="altitudeGndLabel">ist:</string>
+    <string name="mslLabel">Höhe über MSL</string>
+    <string name="maxAltitudeMslLabel">soll:</string>
+    <string name="altitudeMslLabel">ist:</string>
+    <string name="sink">!!! SINKEN !!!</string>
+    <string name="climb">!!! STEIGEN !!!</string>
+    
+    <string name="no_gps_title">GPS ist deaktiviert</string>
+    <string name="no_gps_message">GPS ist nicht aktiviert. Bitte schalten Sie das GPS in den Einstellungen an.</string>
+    <string name="no_gps_button">OK</string>
+
+</resources>
