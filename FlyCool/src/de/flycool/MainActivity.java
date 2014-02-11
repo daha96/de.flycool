@@ -13,11 +13,14 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,6 +56,13 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 	public Location getLocation() {
 		return location;
 	}
+	
+	NotificationManager notificationManager;
+	
+	Notification climbWarningNotification;
+	Notification sinkWarningNotification;
+	Notification climbInformationNotification;
+	Notification sinkInformationNotification;
 
 	
 
@@ -77,6 +87,59 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		warnFrame = (FrameLayout) findViewById(R.id.warnFrame);
 		warnFrame.setBackgroundColor(Color.RED);
 		warnMessage = (TextView) findViewById(R.id.warnMessage);
+		
+		
+		
+		
+		
+		climbWarningNotification = new NotificationCompat.Builder(this)
+				.setContentTitle(
+						getResources().getString(
+								R.string.climbWarningNotificationTitle))
+				.setContentText(
+						getResources().getString(
+								R.string.climbWarningNotificationText))
+				.setAutoCancel(false).setSmallIcon(R.drawable.ic_climb_warning)
+				.build();
+
+		sinkWarningNotification = new NotificationCompat.Builder(this)
+				.setContentTitle(
+						getResources().getString(
+								R.string.sinkWarningNotificationTitle))
+				.setContentText(
+						getResources().getString(
+								R.string.sinkWarningNotificationText))
+				.setAutoCancel(false).setSmallIcon(R.drawable.ic_sink_warning)
+				.build();
+
+		climbInformationNotification = new NotificationCompat.Builder(this)
+				.setContentTitle(
+						getResources().getString(
+								R.string.climbInformationNotificationTitle))
+				.setContentText(
+						getResources().getString(
+								R.string.climbInformationNotificationText))
+				.setAutoCancel(false)
+				.setSmallIcon(R.drawable.ic_climb_information).build();
+
+		sinkInformationNotification = new NotificationCompat.Builder(this)
+				.setContentTitle(
+						getResources().getString(
+								R.string.sinkInformationNotificationTitle))
+				.setContentText(
+						getResources().getString(
+								R.string.sinkInformationNotificationText))
+				.setAutoCancel(false)
+				.setSmallIcon(R.drawable.ic_sink_information).build();
+	
+		notificationManager =
+		    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+		
+		
+		
+		
+		
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -104,6 +167,10 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				0, this);
 	}
+	
+	
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -155,18 +222,22 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 		}
 		else
 		{
+			notificationManager.cancelAll();
+			
 			// Warnung
 			if (popup.getWarnLevel() == WarnLevel.warn)
 			{
 				if (popup.getFlyAction() == FlyAction.climb)
 				{
+					notificationManager.notify(0, climbWarningNotification);
 					enabled = true;
-					message = getResources().getString(R.string.climb);					
+					message = getResources().getString(R.string.climbWarningNotificationTitle);					
 				}
 				else
 				{
+					notificationManager.notify(1, sinkWarningNotification);
 					enabled = true;
-					message = getResources().getString(R.string.sink);
+					message = getResources().getString(R.string.sinkWarningNotificationTitle);
 				}				
 			}
 			// Info
@@ -174,13 +245,15 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 			{
 				if (popup.getFlyAction() == FlyAction.climb)
 				{
+					notificationManager.notify(2, climbInformationNotification);
 					enabled = true;
-					message = getResources().getString(R.string.climb);
+					message = getResources().getString(R.string.climbInformationNotificationTitle);
 				}
 				else
 				{
+					notificationManager.notify(3, sinkInformationNotification);
 					enabled = true;
-					message = getResources().getString(R.string.sink);
+					message = getResources().getString(R.string.sinkInformationNotificationTitle);
 				}
 			}
 		}
@@ -287,4 +360,6 @@ public class MainActivity extends Activity implements LocationListener, FlyingOb
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		Log.d("Latitude", "status");
 	}
+	
+	
 }

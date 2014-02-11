@@ -18,8 +18,6 @@
     <string name="mslLabel">Höhe über MSL</string>
     <string name="maxAltitudeMslLabel">soll:</string>
     <string name="altitudeMslLabel">ist:</string>
-    <string name="sink">!!! SINKEN !!!</string>
-    <string name="climb">!!! STEIGEN !!!</string>
     
     <string name="no_gps_title">GPS ist deaktiviert</string>
     <string name="no_gps_message">GPS ist nicht aktiviert. Bitte schalten Sie das GPS in den Einstellungen an.</string>
@@ -63,6 +61,14 @@
        <string name="pref_summary_elevation_update_timespan">Zeitspanne zwischen zwei GND Updates in Millisekunden (1 s = 1000 ms)</string>
     
     
+       <string name="climbWarningNotificationTitle">!!! STEIGEN !!!</string>
+    <string name="climbWarningNotificationText">Steigen Sie sofort !!!</string>
+    <string name="sinkWarningNotificationTitle">!!! SINKEN !!!</string>
+    <string name="sinkWarningNotificationText">Sinken Sie sofort !!!</string>
+    <string name="climbInformationNotificationTitle">STEIGEN</string>
+    <string name="climbInformationNotificationText">Bitte steigen Sie</string>
+    <string name="sinkInformationNotificationTitle">SINKEN</string>
+    <string name="sinkInformationNotificationText">Bitte sinken Sie</string>
     
     
 </resources>

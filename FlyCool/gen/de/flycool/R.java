@@ -21,7 +21,11 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int ic_climb_information=0x7f020000;
+        public static final int ic_climb_warning=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_sink_information=0x7f020003;
+        public static final int ic_sink_warning=0x7f020004;
     }
     public static final class id {
         public static final int action_settings=0x7f090016;
@@ -59,7 +63,10 @@ public final class R {
         public static final int altitudeGndLabel=0x7f060008;
         public static final int altitudeMslLabel=0x7f06000b;
         public static final int app_name=0x7f060000;
-        public static final int climb=0x7f06000d;
+        public static final int climbInformationNotificationText=0x7f06002d;
+        public static final int climbInformationNotificationTitle=0x7f06002c;
+        public static final int climbWarningNotificationText=0x7f060029;
+        public static final int climbWarningNotificationTitle=0x7f060028;
         public static final int gndLabel=0x7f060005;
         public static final int latitudeLabel=0x7f060003;
         /**    <string name="pref_title_altitudes">Altitudes</string>
@@ -81,35 +88,38 @@ public final class R {
         public static final int minAltitudeGndLabel=0x7f060007;
         public static final int mslAltitudeGndLabel=0x7f060006;
         public static final int mslLabel=0x7f060009;
-        public static final int no_gps_button=0x7f060010;
-        public static final int no_gps_message=0x7f06000f;
-        public static final int no_gps_title=0x7f06000e;
-        public static final int pref_summary_elevation_update_timespan=0x7f060029;
-        public static final int pref_summary_informations_gnd_max=0x7f060025;
-        public static final int pref_summary_informations_gnd_min=0x7f060023;
-        public static final int pref_summary_informations_msl_max=0x7f060020;
-        public static final int pref_summary_informations_msl_min=0x7f06001e;
-        public static final int pref_summary_warnings_gnd_max=0x7f06001a;
-        public static final int pref_summary_warnings_gnd_min=0x7f060018;
-        public static final int pref_summary_warnings_msl_max=0x7f060015;
-        public static final int pref_summary_warnings_msl_min=0x7f060013;
-        public static final int pref_title_elevation_update=0x7f060027;
-        public static final int pref_title_elevation_update_timespan=0x7f060028;
-        public static final int pref_title_informations=0x7f06001c;
-        public static final int pref_title_informations_gnd=0x7f060022;
-        public static final int pref_title_informations_gnd_max=0x7f060026;
-        public static final int pref_title_informations_gnd_min=0x7f060024;
-        public static final int pref_title_informations_msl=0x7f06001d;
-        public static final int pref_title_informations_msl_max=0x7f060021;
-        public static final int pref_title_informations_msl_min=0x7f06001f;
-        public static final int pref_title_warnings=0x7f060011;
-        public static final int pref_title_warnings_gnd=0x7f060017;
-        public static final int pref_title_warnings_gnd_max=0x7f06001b;
-        public static final int pref_title_warnings_gnd_min=0x7f060019;
-        public static final int pref_title_warnings_msl=0x7f060012;
-        public static final int pref_title_warnings_msl_max=0x7f060016;
-        public static final int pref_title_warnings_msl_min=0x7f060014;
-        public static final int sink=0x7f06000c;
+        public static final int no_gps_button=0x7f06000e;
+        public static final int no_gps_message=0x7f06000d;
+        public static final int no_gps_title=0x7f06000c;
+        public static final int pref_summary_elevation_update_timespan=0x7f060027;
+        public static final int pref_summary_informations_gnd_max=0x7f060023;
+        public static final int pref_summary_informations_gnd_min=0x7f060021;
+        public static final int pref_summary_informations_msl_max=0x7f06001e;
+        public static final int pref_summary_informations_msl_min=0x7f06001c;
+        public static final int pref_summary_warnings_gnd_max=0x7f060018;
+        public static final int pref_summary_warnings_gnd_min=0x7f060016;
+        public static final int pref_summary_warnings_msl_max=0x7f060013;
+        public static final int pref_summary_warnings_msl_min=0x7f060011;
+        public static final int pref_title_elevation_update=0x7f060025;
+        public static final int pref_title_elevation_update_timespan=0x7f060026;
+        public static final int pref_title_informations=0x7f06001a;
+        public static final int pref_title_informations_gnd=0x7f060020;
+        public static final int pref_title_informations_gnd_max=0x7f060024;
+        public static final int pref_title_informations_gnd_min=0x7f060022;
+        public static final int pref_title_informations_msl=0x7f06001b;
+        public static final int pref_title_informations_msl_max=0x7f06001f;
+        public static final int pref_title_informations_msl_min=0x7f06001d;
+        public static final int pref_title_warnings=0x7f06000f;
+        public static final int pref_title_warnings_gnd=0x7f060015;
+        public static final int pref_title_warnings_gnd_max=0x7f060019;
+        public static final int pref_title_warnings_gnd_min=0x7f060017;
+        public static final int pref_title_warnings_msl=0x7f060010;
+        public static final int pref_title_warnings_msl_max=0x7f060014;
+        public static final int pref_title_warnings_msl_min=0x7f060012;
+        public static final int sinkInformationNotificationText=0x7f06002f;
+        public static final int sinkInformationNotificationTitle=0x7f06002e;
+        public static final int sinkWarningNotificationText=0x7f06002b;
+        public static final int sinkWarningNotificationTitle=0x7f06002a;
     }
     public static final class style {
         /** 
