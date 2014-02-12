@@ -28,30 +28,26 @@ public final class R {
         public static final int ic_sink_warning=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090017;
+        public static final int action_settings=0x7f090012;
+        public static final int action_showAttitudeProfile=0x7f090013;
         public static final int altitudeGndLabel=0x7f09000c;
         public static final int altitudeGndValue=0x7f09000d;
-        public static final int altitudeMslLabel=0x7f090012;
-        public static final int altitudeMslValue=0x7f090013;
-        public static final int chartFrame=0x7f090016;
-        public static final int gndLabel=0x7f090007;
+        public static final int altitudeMslLabel=0x7f090008;
+        public static final int altitudeMslValue=0x7f090009;
+        public static final int attitudeLabel=0x7f090007;
+        public static final int chartFrame=0x7f090011;
         public static final int latitudeLabel=0x7f090002;
         public static final int latitudeValue=0x7f090003;
         public static final int locationLabel=0x7f090001;
         public static final int longitudeLabel=0x7f090004;
         public static final int longitudeValue=0x7f090005;
-        public static final int maxAltitudeMslLabel=0x7f090010;
-        public static final int maxAltitudeMslValue=0x7f090011;
-        public static final int minAltitudeGndLabel=0x7f09000a;
-        public static final int minAltitudeGndValue=0x7f09000b;
-        public static final int mslAltitudeGndLabel=0x7f090008;
-        public static final int mslAltitudeGndValue=0x7f090009;
-        public static final int mslLabel=0x7f09000f;
-        public static final int relativeLayoutGnd=0x7f090006;
-        public static final int relativeLayoutMsl=0x7f09000e;
+        public static final int mslAltitudeGndLabel=0x7f09000a;
+        public static final int mslAltitudeGndValue=0x7f09000b;
+        public static final int openAttitudePrivileActivityButton=0x7f09000e;
+        public static final int relativeLayoutAttitudes=0x7f090006;
         public static final int relativeLayoutPosition=0x7f090000;
-        public static final int warnFrame=0x7f090014;
-        public static final int warnMessage=0x7f090015;
+        public static final int warnFrame=0x7f09000f;
+        public static final int warnMessage=0x7f090010;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -61,25 +57,29 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int AttitudeProfileActivityLabel=0x7f06000b;
         public static final int action_settings=0x7f060001;
+        public static final int action_showAttitudeProfile=0x7f06000a;
         public static final int altitudeGndLabel=0x7f060008;
-        public static final int altitudeMslLabel=0x7f06000b;
+        public static final int altitudeMslLabel=0x7f060006;
         public static final int app_name=0x7f060000;
+        public static final int attitudeLabel=0x7f060005;
         public static final int climbInformationNotificationText=0x7f06002d;
         public static final int climbInformationNotificationTitle=0x7f06002c;
         public static final int climbWarningNotificationText=0x7f060029;
         public static final int climbWarningNotificationTitle=0x7f060028;
-        public static final int gndLabel=0x7f060005;
+        public static final int gndLabel=0x7f060030;
         public static final int latitudeLabel=0x7f060003;
         public static final int locationLabel=0x7f060002;
         public static final int longitudeLabel=0x7f060004;
-        public static final int maxAltitudeMslLabel=0x7f06000a;
-        public static final int minAltitudeGndLabel=0x7f060007;
-        public static final int mslAltitudeGndLabel=0x7f060006;
-        public static final int mslLabel=0x7f060009;
+        public static final int maxAltitudeMslLabel=0x7f060033;
+        public static final int minAltitudeGndLabel=0x7f060031;
+        public static final int mslAltitudeGndLabel=0x7f060007;
+        public static final int mslLabel=0x7f060032;
         public static final int no_gps_button=0x7f06000e;
         public static final int no_gps_message=0x7f06000d;
         public static final int no_gps_title=0x7f06000c;
+        public static final int openAttitudePrivileActivityButtonLabel=0x7f060009;
         public static final int pref_summary_elevation_update_timespan=0x7f060027;
         public static final int pref_summary_informations_gnd_max=0x7f060023;
         public static final int pref_summary_informations_gnd_min=0x7f060021;

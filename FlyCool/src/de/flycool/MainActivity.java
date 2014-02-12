@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -46,10 +47,10 @@ public class MainActivity extends Activity implements LocationListener,
 	TextView longitudeTextView;
 
 	TextView mslAltitudeGndTextView;
-	TextView minAltitudeGndTextView;
+	// TextView minAltitudeGndTextView;
 	TextView altitudeGndTextView;
 
-	TextView maxAltitudeMslTextView;
+	// TextView maxAltitudeMslTextView;
 	TextView altitudeMslTextView;
 
 	FrameLayout warnFrame;
@@ -96,11 +97,22 @@ public class MainActivity extends Activity implements LocationListener,
 		longitudeTextView = (TextView) findViewById(R.id.longitudeValue);
 
 		mslAltitudeGndTextView = (TextView) findViewById(R.id.mslAltitudeGndValue);
-		minAltitudeGndTextView = (TextView) findViewById(R.id.minAltitudeGndValue);
+		// minAltitudeGndTextView = (TextView)
+		// findViewById(R.id.minAltitudeGndValue);
 		altitudeGndTextView = (TextView) findViewById(R.id.altitudeGndValue);
 
-		maxAltitudeMslTextView = (TextView) findViewById(R.id.maxAltitudeMslValue);
+		// maxAltitudeMslTextView = (TextView)
+		// findViewById(R.id.maxAltitudeMslValue);
 		altitudeMslTextView = (TextView) findViewById(R.id.altitudeMslValue);
+
+		Button button = (Button) findViewById(R.id.openAttitudePrivileActivityButton);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(v.getContext(),
+						AttitudeProfileActivity.class);
+				startActivity(i);
+			}
+		});
 
 		warnFrame = (FrameLayout) findViewById(R.id.warnFrame);
 		warnFrame.setBackgroundColor(Color.RED);
@@ -194,6 +206,10 @@ public class MainActivity extends Activity implements LocationListener,
 		case R.id.action_settings:
 			Intent i = new Intent(this, SettingsActivity.class);
 			startActivity(i);
+			return true;
+		case R.id.action_showAttitudeProfile:
+			Intent i2 = new Intent(this, AttitudeProfileActivity.class);
+			startActivity(i2);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -308,7 +324,7 @@ public class MainActivity extends Activity implements LocationListener,
 		altitudeMslTextView.setText(String.format("%.2f",
 				flyingObject.getAttitudeAboveMsl())
 				+ " m");
-		
+
 		track.addTrackEntry(track.new TrackEntry(new Date(), flyingObject
 				.getAttitudeAboveMsl(), flyingObject.getElevation(),
 				flyingObject.getLastPopup()));

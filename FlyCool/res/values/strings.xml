@@ -6,13 +6,21 @@
     <string name="locationLabel">Position</string>
     <string name="latitudeLabel">Latitude</string>
     <string name="longitudeLabel">Longitude</string>
-    <string name="gndLabel">GND</string>
+    
+    
+    <string name="attitudeLabel">attitudeLabel</string>    
+    <string name="altitudeMslLabel">MSL</string>
+    
     <string name="mslAltitudeGndLabel">ground MSL</string>
-    <string name="minAltitudeGndLabel">should</string>
-    <string name="altitudeGndLabel">is</string>
-    <string name="mslLabel">MSL</string>
-    <string name="maxAltitudeMslLabel">should</string>
-    <string name="altitudeMslLabel">is</string>
+    <string name="altitudeGndLabel">GND</string>
+    
+    <string name="openAttitudePrivileActivityButtonLabel">openAttitudePrivileActivityButtonLabel</string>
+  
+ <string name="action_showAttitudeProfile">action_showAttitudeProfile</string>
+ <string name="AttitudeProfileActivityLabel">AttitudeProfileActivityLabel</string>
+    
+    
+    
     <string name="no_gps_title">GPS not enabled</string>
     <string name="no_gps_message">GPS is not enabled. Please enable GPS at the settings menu.</string>
     <string name="no_gps_button">OK</string>

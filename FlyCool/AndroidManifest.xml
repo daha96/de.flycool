@@ -26,7 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="de.flycool.AttitudeProfileActivity"
+            android:label="@string/AttitudeProfileActivityLabel" >
+            
+        </activity>
+        
         <activity android:name="SettingsActivity"></activity>
+        
     </application>
 
 </manifest>
