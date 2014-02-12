@@ -5,6 +5,7 @@ import java.util.Date;
 import de.flycool.FlyingObject.FlyAction;
 import de.flycool.FlyingObject.Popup;
 import de.flycool.FlyingObject.WarnLevel;
+import de.flycool.Track.TrackEntry;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -30,8 +31,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 /**
- * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist der
- * Einstiegspunkt der App
+ * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist
+ * der Einstiegspunkt der App
  * 
  * @author daniel
  * 
@@ -69,6 +70,8 @@ public class MainActivity extends Activity implements LocationListener,
 	Notification sinkWarningNotification;
 	Notification climbInformationNotification;
 	Notification sinkInformationNotification;
+
+	Track track = new Track();
 
 	/**
 	 * 
@@ -198,8 +201,8 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und aktualisiert
-	 * die komplette App
+	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und
+	 * aktualisiert die komplette App
 	 */
 	@Override
 	public void onLocationChanged(Location location) {
@@ -289,6 +292,10 @@ public class MainActivity extends Activity implements LocationListener,
 		altitudeGndTextView.setText(String.format("%.2f",
 				flyingObject.getAttitudeAboveGnd())
 				+ " m");
+
+		track.addTrackEntry(track.new TrackEntry(new Date(), flyingObject
+				.getAttitudeAboveMsl(), flyingObject.getElevation(),
+				flyingObject.getLastPopup()));
 	}
 
 	/**
@@ -301,6 +308,10 @@ public class MainActivity extends Activity implements LocationListener,
 		altitudeMslTextView.setText(String.format("%.2f",
 				flyingObject.getAttitudeAboveMsl())
 				+ " m");
+		
+		track.addTrackEntry(track.new TrackEntry(new Date(), flyingObject
+				.getAttitudeAboveMsl(), flyingObject.getElevation(),
+				flyingObject.getLastPopup()));
 	}
 
 	@Override

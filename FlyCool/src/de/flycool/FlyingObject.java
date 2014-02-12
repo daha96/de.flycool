@@ -235,4 +235,8 @@ public class FlyingObject {
 		else
 			return Integer.parseInt(str);
 	}
+
+	public Popup getLastPopup() {
+		return lastPopup;
+	}
 }
