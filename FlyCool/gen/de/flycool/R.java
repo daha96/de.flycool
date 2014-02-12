@@ -28,11 +28,12 @@ public final class R {
         public static final int ic_sink_warning=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090016;
+        public static final int action_settings=0x7f090017;
         public static final int altitudeGndLabel=0x7f09000c;
         public static final int altitudeGndValue=0x7f09000d;
         public static final int altitudeMslLabel=0x7f090012;
         public static final int altitudeMslValue=0x7f090013;
+        public static final int chartFrame=0x7f090016;
         public static final int gndLabel=0x7f090007;
         public static final int latitudeLabel=0x7f090002;
         public static final int latitudeValue=0x7f090003;
@@ -54,6 +55,7 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int attitude_profile=0x7f030001;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -69,19 +71,6 @@ public final class R {
         public static final int climbWarningNotificationTitle=0x7f060028;
         public static final int gndLabel=0x7f060005;
         public static final int latitudeLabel=0x7f060003;
-        /**    <string name="pref_title_altitudes">Altitudes</string>
-    <string name="pref_title_min_altitude_gnd">min altitude above GND</string>
-    <string name="pref_summary_min_altitude_gnd">min altitude above GND</string>
-    <string name="pref_title_max_altitude_msl">min altitude above MSL</string>
-    <string name="pref_summary_max_altitude_msl">min altitude above MSL</string>
-   
-    <string name="pref_title_altitudes">Höhen</string>
-    <string name="pref_title_min_altitude_gnd">minimale Höhe über GND</string>
-    <string name="pref_summary_min_altitude_gnd">Wenn tiefer als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
-    <string name="pref_title_max_altitude_msl">maximale Höhe über MSL</string>
-    <string name="pref_summary_max_altitude_msl">Wenn höher als diese Höhe geflogen wird, wird eine Warnung ausgegeben</string>
-  
-         */
         public static final int locationLabel=0x7f060002;
         public static final int longitudeLabel=0x7f060004;
         public static final int maxAltitudeMslLabel=0x7f06000a;
