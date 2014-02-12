@@ -172,9 +172,7 @@ public class MainActivity extends Activity implements LocationListener,
 			builder.setPositiveButton(R.string.no_gps_button,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
-							Intent intent = new Intent(
-									Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-							startActivity(intent);
+							showAttitudeProfileActivity();
 						}
 					});
 
@@ -208,12 +206,18 @@ public class MainActivity extends Activity implements LocationListener,
 			startActivity(i);
 			return true;
 		case R.id.action_showAttitudeProfile:
-			Intent i2 = new Intent(this, AttitudeProfileActivity.class);
-			startActivity(i2);
+			showAttitudeProfileActivity();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	void showAttitudeProfileActivity()
+	{
+		Intent i = new Intent(this, AttitudeProfileActivity.class);
+		i.putExtra("Track", track);
+		startActivity(i);
 	}
 
 	/**
@@ -309,7 +313,7 @@ public class MainActivity extends Activity implements LocationListener,
 				flyingObject.getAttitudeAboveGnd())
 				+ " m");
 
-		track.addTrackEntry(track.new TrackEntry(new Date(), flyingObject
+		track.addTrackEntry(track.new TrackEntry(new Date(), location, flyingObject
 				.getAttitudeAboveMsl(), flyingObject.getElevation(),
 				flyingObject.getLastPopup()));
 	}
@@ -325,7 +329,7 @@ public class MainActivity extends Activity implements LocationListener,
 				flyingObject.getAttitudeAboveMsl())
 				+ " m");
 
-		track.addTrackEntry(track.new TrackEntry(new Date(), flyingObject
+		track.addTrackEntry(track.new TrackEntry(new Date(), location, flyingObject
 				.getAttitudeAboveMsl(), flyingObject.getElevation(),
 				flyingObject.getLastPopup()));
 	}

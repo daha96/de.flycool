@@ -35,7 +35,7 @@ public final class R {
         public static final int altitudeMslLabel=0x7f090008;
         public static final int altitudeMslValue=0x7f090009;
         public static final int attitudeLabel=0x7f090007;
-        public static final int chartFrame=0x7f090011;
+        public static final int chartLayout=0x7f090011;
         public static final int latitudeLabel=0x7f090002;
         public static final int latitudeValue=0x7f090003;
         public static final int locationLabel=0x7f090001;

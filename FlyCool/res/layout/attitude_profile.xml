@@ -5,11 +5,13 @@
     android:padding="16dp"
     tools:context=".MainActivity" >
 
-    <FrameLayout
-        android:id="@+id/chartFrame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chartLayout"
+        android:orientation="vertical">
+       
+    </LinearLayout>
 
-    </FrameLayout>
 
 </RelativeLayout>

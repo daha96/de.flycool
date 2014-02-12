@@ -1,8 +1,11 @@
 package de.flycool;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import android.location.Location;
 
 import de.flycool.FlyingObject.Popup;
 
@@ -12,7 +15,12 @@ import de.flycool.FlyingObject.Popup;
  * @author daniel.hardt
  * 
  */
-public class Track {
+public class Track implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2738996226468088361L;
 
 	/**
 	 * Stellt einen Eintrag eines Höhenprofils da
@@ -20,19 +28,26 @@ public class Track {
 	 * @author daniel.hardt
 	 * 
 	 */
-	public class TrackEntry {
+	public class TrackEntry implements Serializable {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1700235839784324479L;
 
 		Date time;
 
+		Location location;
 		double attitudeAboveMsl;
 		double elevation;
 
 		Popup popup;
 
-		public TrackEntry(Date time, double attitudeAboveMsl, double elevation,
+		public TrackEntry(Date time, Location location, double attitudeAboveMsl, double elevation,
 				Popup popup) {
 
 			this.time = time;
+			this.location = location;
 			this.attitudeAboveMsl = attitudeAboveMsl;
 			this.elevation = elevation;
 			this.popup = popup;
@@ -68,6 +83,14 @@ public class Track {
 
 		public void setPopup(Popup popup) {
 			this.popup = popup;
+		}
+
+		public Location getLocation() {
+			return location;
+		}
+
+		public void setLocation(Location location) {
+			this.location = location;
 		}
 	}
 
