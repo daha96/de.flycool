@@ -54,5 +54,7 @@
     <string name="attitudeProfileChart_YTitle">Attitude in meters</string>
     <string name="attitudeProfileChart_gndSeries">Ground</string>
     <string name="attitudeProfileChart_attitudeProfileSeries">Attitude provile</string>
+    <string name="action_saveTrack">Save track</string>
+    <string name="send_to">Send to</string>
 
 </resources>

@@ -28,6 +28,7 @@ public final class R {
         public static final int ic_sink_warning=0x7f020004;
     }
     public static final class id {
+        public static final int action_saveTrack=0x7f090014;
         public static final int action_settings=0x7f090012;
         public static final int action_showAttitudeProfile=0x7f090013;
         public static final int altitudeGndLabel=0x7f09000c;
@@ -58,6 +59,7 @@ public final class R {
     }
     public static final class string {
         public static final int AttitudeProfileActivityLabel=0x7f06000b;
+        public static final int action_saveTrack=0x7f060035;
         public static final int action_settings=0x7f060001;
         public static final int action_showAttitudeProfile=0x7f06000a;
         public static final int altitudeGndLabel=0x7f060008;
@@ -106,6 +108,7 @@ public final class R {
         public static final int pref_title_warnings_msl=0x7f060010;
         public static final int pref_title_warnings_msl_max=0x7f060014;
         public static final int pref_title_warnings_msl_min=0x7f060012;
+        public static final int send_to=0x7f060036;
         public static final int sinkInformationNotificationText=0x7f06002f;
         public static final int sinkInformationNotificationTitle=0x7f06002e;
         public static final int sinkWarningNotificationText=0x7f06002b;

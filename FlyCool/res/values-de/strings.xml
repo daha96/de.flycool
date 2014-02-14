@@ -54,5 +54,7 @@
     <string name="attitudeProfileChart_YTitle">Höhe in Metern</string>
     <string name="attitudeProfileChart_gndSeries">Boden</string>
     <string name="attitudeProfileChart_attitudeProfileSeries">Höhenprofil</string>
+    <string name="action_saveTrack">Track speichern</string>
+    <string name="send_to">Senden an</string>
 
 </resources>

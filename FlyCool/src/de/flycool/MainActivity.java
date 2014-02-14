@@ -208,11 +208,61 @@ public class MainActivity extends Activity implements LocationListener,
 		case R.id.action_showAttitudeProfile:
 			showAttitudeProfileActivity();
 			return true;
+		case R.id.action_saveTrack:
+			saveTrack();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
 
+	/**
+	 * Speichert den Track ab
+	 */
+	void saveTrack() {
+		String file =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+				+ "<kml xmlns= \"http://www.opengis.net/kml/2.2\">"
+				+ "  <Document>"
+				+ "    <name>Track</name>"
+				+ "    <description>FlyCool</description>"
+				+ "    <Style id=\"yellowLineGreenPoly\">"
+				+ "      <LineStyle>"
+				+ "        <color>7f00ffff</color>"
+				+ "        <width>4</width>"
+				+ "      </LineStyle>"
+				+ "      <PolyStyle>"
+				+ "        <color>7f00ff00</color>"
+				+ "      </PolyStyle>"
+				+ "    </Style>"
+				+ "    <Placemark>"
+				+ "      <name>Absolute Extruded</name>"
+				+ "      <description>Transparent green wall with yellow outlines</description>"
+				+ "      <styleUrl>#yellowLineGreenPoly</styleUrl>"
+				+ "      <LineString>" + "        <extrude>1</extrude>"
+				+ "        <tessellate>1</tessellate>"
+				+ "        <altitudeMode>absolute</altitudeMode>"
+				+ "        <coordinates>\n";
+		
+		for (TrackEntry entry : track.getTrackEntries()) {
+			file = file + String.format("%f", entry.getLatitude()) + ", " + String.format("%f", entry.getLongitude()) + "\n";
+		}
+
+		file = file +
+				"        </coordinates>" + "      </LineString>"
+				+ "    </Placemark>" + "  </Document>" + "</kml>";
+		
+		
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.putExtra(Intent.EXTRA_STREAM, file);
+		shareIntent.setType("application/vnd.google-earth.kml+xml");
+		startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.send_to)));
+	}
+
+	/**
+	 * Zeigt das Höhenprofil an
+	 */
 	void showAttitudeProfileActivity() {
 		Intent i = new Intent(this, AttitudeProfileActivity.class);
 		i.putExtra("Track", track);
