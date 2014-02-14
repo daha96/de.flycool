@@ -40,5 +40,5 @@ Thumbs.db
 
 /bin
 /gen
-/libs
+#/libs
 /doc

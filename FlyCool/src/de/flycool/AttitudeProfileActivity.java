@@ -8,6 +8,8 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import de.flycool.Track.TrackEntry;
+
 import android.app.Activity;
 import android.graphics.Color;
 
@@ -65,23 +67,27 @@ public class AttitudeProfileActivity extends Activity {
 	 private void OpenChart()
 	    {
 	    // Define the number of elements you want in the chart.
-	    int z[]={0,1,2,3,4,5,6,7};
+	//    int z[]={0,1,2,3,4,5,6,7};
 	   
 	   
-	       int x[]={10,18,32,21,48,60,53,80};
+	//       int x[]={10,18,32,21,48,60,53,80};
 	   
 
 	      // Create XY Series for X Series.
 	    XYSeries xSeries=new XYSeries("X Series");
 	   
+	    
+	    for (TrackEntry entry : track.getTrackEntries()) {
+			xSeries.add(entry.getTime().getTime(), entry.getAttitudeAboveMsl());
+		}
 
 	    //  Adding data to the X Series.
-	    for(int i=0;i<z.length;i++)
+	/*    for(int i=0;i<z.length;i++)
 	    {
 	    xSeries.add(z[i],x[i]);
 	   
 	    }
-
+*/
 	        // Create a Dataset to hold the XSeries.
 	   
 	    XYMultipleSeriesDataset dataset=new XYMultipleSeriesDataset();
@@ -112,12 +118,12 @@ public class AttitudeProfileActivity extends Activity {
 	   
 	    mRenderer.setShowGrid(true);
 	 
-	    mRenderer.setClickEnabled(true);
+//	    mRenderer.setClickEnabled(true);
 	   
-	    for(int i=0;i<z.length;i++)
+	/*    for(int i=0;i<z.length;i++)
 	    {
 	    mRenderer.addXTextLabel(i, mMonth[i]);
-	    }
+	    }*/
 	   
 	       // Adding the XSeriesRenderer to the MultipleRenderer. 
 	    mRenderer.addSeriesRenderer(Xrenderer);

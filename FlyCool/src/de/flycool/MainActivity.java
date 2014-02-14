@@ -32,8 +32,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 /**
- * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist
- * der Einstiegspunkt der App
+ * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist der
+ * Einstiegspunkt der App
  * 
  * @author daniel
  * 
@@ -108,9 +108,7 @@ public class MainActivity extends Activity implements LocationListener,
 		Button button = (Button) findViewById(R.id.openAttitudePrivileActivityButton);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent i = new Intent(v.getContext(),
-						AttitudeProfileActivity.class);
-				startActivity(i);
+				showAttitudeProfileActivity();
 			}
 		});
 
@@ -172,7 +170,9 @@ public class MainActivity extends Activity implements LocationListener,
 			builder.setPositiveButton(R.string.no_gps_button,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
-							showAttitudeProfileActivity();
+							Intent intent = new Intent(
+									Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+							startActivity(intent);
 						}
 					});
 
@@ -212,17 +212,16 @@ public class MainActivity extends Activity implements LocationListener,
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	void showAttitudeProfileActivity()
-	{
+
+	void showAttitudeProfileActivity() {
 		Intent i = new Intent(this, AttitudeProfileActivity.class);
 		i.putExtra("Track", track);
 		startActivity(i);
 	}
 
 	/**
-	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und
-	 * aktualisiert die komplette App
+	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und aktualisiert
+	 * die komplette App
 	 */
 	@Override
 	public void onLocationChanged(Location location) {
@@ -313,9 +312,9 @@ public class MainActivity extends Activity implements LocationListener,
 				flyingObject.getAttitudeAboveGnd())
 				+ " m");
 
-		track.addTrackEntry(track.new TrackEntry(new Date(), location, flyingObject
-				.getAttitudeAboveMsl(), flyingObject.getElevation(),
-				flyingObject.getLastPopup()));
+		track.addTrackEntry(track.new TrackEntry(new Date(), location,
+				flyingObject.getAttitudeAboveMsl(),
+				flyingObject.getElevation(), flyingObject.getLastPopup()));
 	}
 
 	/**
@@ -329,9 +328,9 @@ public class MainActivity extends Activity implements LocationListener,
 				flyingObject.getAttitudeAboveMsl())
 				+ " m");
 
-		track.addTrackEntry(track.new TrackEntry(new Date(), location, flyingObject
-				.getAttitudeAboveMsl(), flyingObject.getElevation(),
-				flyingObject.getLastPopup()));
+		track.addTrackEntry(track.new TrackEntry(new Date(), location,
+				flyingObject.getAttitudeAboveMsl(),
+				flyingObject.getElevation(), flyingObject.getLastPopup()));
 	}
 
 	@Override
