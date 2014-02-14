@@ -7,10 +7,12 @@ import java.util.List;
 
 import android.location.Location;
 
+import de.flycool.FlyingObject.FlyAction;
 import de.flycool.FlyingObject.Popup;
+import de.flycool.FlyingObject.WarnLevel;
 
 /**
- * Stellt ein Höhenprofil da
+ * Stellt ein Hï¿½henprofil da
  * 
  * @author daniel.hardt
  * 
@@ -23,7 +25,7 @@ public class Track implements Serializable {
 	private static final long serialVersionUID = -2738996226468088361L;
 
 	/**
-	 * Stellt einen Eintrag eines Höhenprofils da
+	 * Stellt einen Eintrag eines Hï¿½henprofils da
 	 * 
 	 * @author daniel.hardt
 	 * 
@@ -37,20 +39,56 @@ public class Track implements Serializable {
 
 		Date time;
 
-		Location location;
+		double latitude;
+		public double getLatitude() {
+			return latitude;
+		}
+
+		public void setLatitude(double latitude) {
+			this.latitude = latitude;
+		}
+
+		public double getLongitude() {
+			return longitude;
+		}
+
+		public void setLongitude(double longitude) {
+			this.longitude = longitude;
+		}
+
+		double longitude;
 		double attitudeAboveMsl;
 		double elevation;
 
-		Popup popup;
+		WarnLevel warnLevel;
+		public WarnLevel getWarnLevel() {
+			return warnLevel;
+		}
+
+		public void setWarnLevel(WarnLevel warnLevel) {
+			this.warnLevel = warnLevel;
+		}
+
+		public FlyAction getFlyAction() {
+			return flyAction;
+		}
+
+		public void setFlyAction(FlyAction flyAction) {
+			this.flyAction = flyAction;
+		}
+
+		FlyAction flyAction;
 
 		public TrackEntry(Date time, Location location, double attitudeAboveMsl, double elevation,
 				Popup popup) {
 
 			this.time = time;
-			this.location = location;
+			this.latitude = location.getLatitude();
+			this.longitude = location.getLongitude();			
 			this.attitudeAboveMsl = attitudeAboveMsl;
 			this.elevation = elevation;
-			this.popup = popup;
+			this.warnLevel = popup.warnLevel;
+			this.flyAction = popup.flyAction;
 		}
 
 		public Date getTime() {
@@ -77,20 +115,15 @@ public class Track implements Serializable {
 			this.elevation = elevation;
 		}
 
-		public Popup getPopup() {
-			return popup;
-		}
 
-		public void setPopup(Popup popup) {
-			this.popup = popup;
+	/*	public Location getLocation() {
+			this.latitude = location.getLatitude();
+			this.longitude = location.getLongitude();
 		}
-
-		public Location getLocation() {
-			return location;
-		}
-
+*/
 		public void setLocation(Location location) {
-			this.location = location;
+			this.latitude = location.getLatitude();
+			this.longitude = location.getLongitude();
 		}
 	}
 
@@ -102,7 +135,7 @@ public class Track implements Serializable {
 	 */
 
 	/**
-	 * Fügt dem Höhenprofil einen Eintrag hinzu
+	 * Fï¿½gt dem Hï¿½henprofil einen Eintrag hinzu
 	 * 
 	 * @param trackEntry
 	 */

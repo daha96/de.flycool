@@ -1,5 +1,7 @@
 package de.flycool;
 
+import java.io.Serializable;
+
 import android.content.SharedPreferences;
 
 /**
@@ -58,6 +60,10 @@ public class FlyingObject {
 	 */
 	class Popup {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 2953664207628441090L;
 		WarnLevel warnLevel;
 		FlyAction flyAction;
 

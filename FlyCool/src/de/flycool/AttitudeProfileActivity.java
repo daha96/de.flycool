@@ -57,10 +57,7 @@ public class AttitudeProfileActivity extends Activity {
 	private GraphicalView mChart;
 
 
-	private String[] mMonth = new String[] {
-	       "Jan", "Feb" , "Mar", "Apr", "May", "Jun",
 
-	       "Jul", "Aug" };
 
 	
 	   
