@@ -16,11 +16,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
-
 public class AttitudeProfileActivity extends Activity {
-	
+
 	Track track;
-	
+
 	/**
 	 * Läd die Aktivität
 	 */
@@ -28,147 +27,82 @@ public class AttitudeProfileActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		
 		setContentView(R.layout.attitude_profile);
-		
+
 		track = (Track) getIntent().getExtras().getSerializable("Track");
-		
-		
-		
+
 		OpenChart();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private GraphicalView mChart;
 
+	private void OpenChart() {
 
+		// Create XY Series for X Series.
+		XYSeries groundSeries = new XYSeries(getResources().getString(
+				R.string.attitudeProfileChart_gndSeries));
+		XYSeries attitudeSeries = new XYSeries(getResources().getString(
+				R.string.attitudeProfileChart_attitudeProfileSeries));
 
+		long startTime = track.getStartTime().getTime();
 
-	
-	   
-	 private void OpenChart()
-	    {
-	    // Define the number of elements you want in the chart.
-	//    int z[]={0,1,2,3,4,5,6,7};
-	   
-	   
-	//       int x[]={10,18,32,21,48,60,53,80};
-	   
-
-	      // Create XY Series for X Series.
-	    XYSeries xSeries=new XYSeries("X Series");
-	   
-	    
-	    for (TrackEntry entry : track.getTrackEntries()) {
-			xSeries.add(entry.getTime().getTime(), entry.getAttitudeAboveMsl());
+		for (TrackEntry entry : track.getTrackEntries()) {
+			groundSeries.add((entry.getTime().getTime() - startTime) / 1000,
+					entry.getElevation());
+			attitudeSeries.add((entry.getTime().getTime() - startTime) / 1000,
+					entry.getAttitudeAboveMsl());
 		}
 
-	    //  Adding data to the X Series.
-	/*    for(int i=0;i<z.length;i++)
-	    {
-	    xSeries.add(z[i],x[i]);
-	   
-	    }
-*/
-	        // Create a Dataset to hold the XSeries.
-	   
-	    XYMultipleSeriesDataset dataset=new XYMultipleSeriesDataset();
-	   
-	      // Add X series to the Dataset.  
-	dataset.addSeries(xSeries);
-	   
-	   
-	      // Create XYSeriesRenderer to customize XSeries
+		// Create a Dataset to hold the XSeries.
 
-	    XYSeriesRenderer Xrenderer=new XYSeriesRenderer();
-	    Xrenderer.setColor(Color.GREEN);
-	    Xrenderer.setPointStyle(PointStyle.DIAMOND);
-	    Xrenderer.setDisplayChartValues(true);
-	    Xrenderer.setLineWidth(2);
-	    Xrenderer.setFillPoints(true);
-	   
-	     // Create XYMultipleSeriesRenderer to customize the whole chart
+		XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 
-	    XYMultipleSeriesRenderer mRenderer=new XYMultipleSeriesRenderer();
-	   
-	    mRenderer.setChartTitle("X Vs Y Chart");
-	    mRenderer.setXTitle("X Values");
-	    mRenderer.setYTitle("Y Values");
-	    mRenderer.setZoomButtonsVisible(true);
-	    mRenderer.setXLabels(0);
-	    mRenderer.setPanEnabled(false);
-	   
-	    mRenderer.setShowGrid(true);
-	 
-//	    mRenderer.setClickEnabled(true);
-	   
-	/*    for(int i=0;i<z.length;i++)
-	    {
-	    mRenderer.addXTextLabel(i, mMonth[i]);
-	    }*/
-	   
-	       // Adding the XSeriesRenderer to the MultipleRenderer. 
-	    mRenderer.addSeriesRenderer(Xrenderer);
-	 
-	   
-	    LinearLayout chart_container=(LinearLayout)findViewById(R.id.chartLayout);
+		// Add X series to the Dataset.
+		dataset.addSeries(groundSeries);
+		dataset.addSeries(attitudeSeries);
 
-	// Creating an intent to plot line chart using dataset and multipleRenderer
-	   
-	    mChart=(GraphicalView)ChartFactory.getLineChartView(getBaseContext(), dataset, mRenderer);
-	   
-	    //  Adding click event to the Line Chart.
+		// Create XYSeriesRenderer to customize XSeries
 
-	  /*  mChart.setOnClickListener(new View.OnClickListener() {
+		XYSeriesRenderer attitudeProfileRenderer = new XYSeriesRenderer();
+		attitudeProfileRenderer.setColor(Color.BLUE);
+		// attitudeProfileRenderer.setPointStyle(PointStyle.DIAMOND);
+		attitudeProfileRenderer.setDisplayChartValues(true);
+		attitudeProfileRenderer.setLineWidth(2);
+		// attitudeProfileRenderer.setFillPoints(true);
 
-	@Override
-	public void onClick(View arg0) {
-	// TODO Auto-generated method stub
+		XYSeriesRenderer gndRenderer = new XYSeriesRenderer();
+		gndRenderer.setColor(Color.RED);
+		// gndRenderer.setPointStyle(PointStyle.DIAMOND);
+		gndRenderer.setDisplayChartValues(true);
+		gndRenderer.setLineWidth(2);
+		// gndRenderer.setFillPoints(true);
 
-	SeriesSelection series_selection=mChart.getCurrentSeriesAndPoint();
+		// Create XYMultipleSeriesRenderer to customize the whole chart
 
-	if(series_selection!=null)
-	{
-	int series_index=series_selection.getSeriesIndex();
+		XYMultipleSeriesRenderer mRenderer = new XYMultipleSeriesRenderer();
 
-	String select_series="X Series";
-	if(series_index==0)
-	{
-	select_series="X Series";
-	}else
-	{
-	select_series="Y Series";
-	}
+		mRenderer.setChartTitle(getResources().getString(
+				R.string.attitudeProfileChart_Title));
+		mRenderer.setXTitle(getResources().getString(
+				R.string.attitudeProfileChart_XTitle));
+		mRenderer.setYTitle(getResources().getString(
+				R.string.attitudeProfileChart_YTitle));
+		// mRenderer.setZoomButtonsVisible(true);
+		// mRenderer.setXLabels(0);
+		// mRenderer.setPanEnabled(false);
 
-	String month=mMonth[(int)series_selection.getXValue()];
+		mRenderer.setShowGrid(true);
 
-	int amount=(int)series_selection.getValue();
+		// Adding the XSeriesRenderer to the MultipleRenderer.
+		mRenderer.addSeriesRenderer(attitudeProfileRenderer);
+		mRenderer.addSeriesRenderer(gndRenderer);
 
-	Toast.makeText(getBaseContext(), select_series+"in" + month+":"+amount, Toast.LENGTH_LONG).show();
-	}
-	}
-	});
-	   */
-	// Add the graphical view mChart object into the Linear layout .
-	    chart_container.addView(mChart);
-	   
-	   
-	    
+		// Creating an intent to plot line chart using dataset and
+		// multipleRenderer
+
+		GraphicalView chart = (GraphicalView) ChartFactory.getLineChartView(
+				getBaseContext(), dataset, mRenderer);
+
+		// Add the graphical view mChart object into the Linear layout .
+		((LinearLayout) findViewById(R.id.chartLayout)).addView(chart);
 
 	}
 }

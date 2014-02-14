@@ -134,11 +134,12 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
-    android:id="@+id/openAttitudePrivileActivityButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/altitudeGndLabel"
-    android:text="@string/openAttitudePrivileActivityButtonLabel" />
+        android:id="@+id/openAttitudePrivileActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/altitudeGndLabel"
+        android:layout_marginTop="16dp"
+        android:text="@string/openAttitudePrivileActivityButtonLabel" />
     
 </RelativeLayout>
 

@@ -6,13 +6,13 @@
     <string name="locationLabel">Position</string>
     <string name="latitudeLabel">Breitengrad:</string>
     <string name="longitudeLabel">Längengrad:</string>
-    <string name="gndLabel">Höhe über GND</string>
+    <string name="attitudeLabel">Höhen</string>
+    <string name="altitudeMslLabel">Höhe über MSL:</string>
     <string name="mslAltitudeGndLabel">GND Höhe MSL:</string>
-    <string name="minAltitudeGndLabel">soll:</string>
-    <string name="altitudeGndLabel">ist:</string>
-    <string name="mslLabel">Höhe über MSL</string>
-    <string name="maxAltitudeMslLabel">soll:</string>
-    <string name="altitudeMslLabel">ist:</string>
+    <string name="altitudeGndLabel">Höhe über GND:</string>
+    <string name="openAttitudePrivileActivityButtonLabel">Höhenprofil anzeigen</string>
+    <string name="action_showAttitudeProfile">Höhenprofil</string>
+    <string name="AttitudeProfileActivityLabel">Höhenprofil</string>
     <string name="no_gps_title">GPS ist deaktiviert</string>
     <string name="no_gps_message">GPS ist nicht aktiviert. Bitte schalten Sie das GPS in den Einstellungen an.</string>
     <string name="no_gps_button">OK</string>
@@ -49,5 +49,10 @@
     <string name="climbInformationNotificationText">Bitte steigen Sie</string>
     <string name="sinkInformationNotificationTitle">SINKEN</string>
     <string name="sinkInformationNotificationText">Bitte sinken Sie</string>
+    <string name="attitudeProfileChart_Title">Höhenprofil</string>
+    <string name="attitudeProfileChart_XTitle">Zeit in Sekunden</string>
+    <string name="attitudeProfileChart_YTitle">Höhe in Metern</string>
+    <string name="attitudeProfileChart_gndSeries">Boden</string>
+    <string name="attitudeProfileChart_attitudeProfileSeries">Höhenprofil</string>
 
 </resources>

@@ -19,9 +19,6 @@ import de.flycool.FlyingObject.WarnLevel;
  */
 public class Track implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2738996226468088361L;
 
 	/**
@@ -32,14 +29,39 @@ public class Track implements Serializable {
 	 */
 	public class TrackEntry implements Serializable {
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1700235839784324479L;
 
 		Date time;
 
 		double latitude;
+		double longitude;
+
+		double attitudeAboveMsl;
+		double elevation;
+
+		WarnLevel warnLevel;
+		FlyAction flyAction;
+
+		public TrackEntry(Date time, Location location,
+				double attitudeAboveMsl, double elevation, Popup popup) {
+
+			this.time = time;
+			this.latitude = location.getLatitude();
+			this.longitude = location.getLongitude();
+			this.attitudeAboveMsl = attitudeAboveMsl;
+			this.elevation = elevation;
+			this.warnLevel = popup.warnLevel;
+			this.flyAction = popup.flyAction;
+		}
+
+		public Date getTime() {
+			return time;
+		}
+
+		public void setTime(Date time) {
+			this.time = time;
+		}
+
 		public double getLatitude() {
 			return latitude;
 		}
@@ -56,11 +78,6 @@ public class Track implements Serializable {
 			this.longitude = longitude;
 		}
 
-		double longitude;
-		double attitudeAboveMsl;
-		double elevation;
-
-		WarnLevel warnLevel;
 		public WarnLevel getWarnLevel() {
 			return warnLevel;
 		}
@@ -75,28 +92,6 @@ public class Track implements Serializable {
 
 		public void setFlyAction(FlyAction flyAction) {
 			this.flyAction = flyAction;
-		}
-
-		FlyAction flyAction;
-
-		public TrackEntry(Date time, Location location, double attitudeAboveMsl, double elevation,
-				Popup popup) {
-
-			this.time = time;
-			this.latitude = location.getLatitude();
-			this.longitude = location.getLongitude();			
-			this.attitudeAboveMsl = attitudeAboveMsl;
-			this.elevation = elevation;
-			this.warnLevel = popup.warnLevel;
-			this.flyAction = popup.flyAction;
-		}
-
-		public Date getTime() {
-			return time;
-		}
-
-		public void setTime(Date time) {
-			this.time = time;
 		}
 
 		public double getAttitudeAboveMsl() {
@@ -115,12 +110,6 @@ public class Track implements Serializable {
 			this.elevation = elevation;
 		}
 
-
-	/*	public Location getLocation() {
-			this.latitude = location.getLatitude();
-			this.longitude = location.getLongitude();
-		}
-*/
 		public void setLocation(Location location) {
 			this.latitude = location.getLatitude();
 			this.longitude = location.getLongitude();
@@ -129,10 +118,6 @@ public class Track implements Serializable {
 
 	List<TrackEntry> trackEntries = new ArrayList<TrackEntry>();
 	Date startTime = new Date();
-
-	/*
-	 * public Track() { }
-	 */
 
 	/**
 	 * F�gt dem H�henprofil einen Eintrag hinzu

@@ -6,21 +6,13 @@
     <string name="locationLabel">Position</string>
     <string name="latitudeLabel">Latitude</string>
     <string name="longitudeLabel">Longitude</string>
-    
-    
-    <string name="attitudeLabel">attitudeLabel</string>    
-    <string name="altitudeMslLabel">MSL</string>
-    
-    <string name="mslAltitudeGndLabel">ground MSL</string>
-    <string name="altitudeGndLabel">GND</string>
-    
-    <string name="openAttitudePrivileActivityButtonLabel">openAttitudePrivileActivityButtonLabel</string>
-  
- <string name="action_showAttitudeProfile">action_showAttitudeProfile</string>
- <string name="AttitudeProfileActivityLabel">AttitudeProfileActivityLabel</string>
-    
-    
-    
+    <string name="attitudeLabel">Attitudes</string>
+    <string name="altitudeMslLabel">attitude above MSL:</string>
+    <string name="mslAltitudeGndLabel">ground attitude above MSL:</string>
+    <string name="altitudeGndLabel">attitude above GND:</string>
+    <string name="openAttitudePrivileActivityButtonLabel">Open attitude provile</string>
+    <string name="action_showAttitudeProfile">Attitude provile</string>
+    <string name="AttitudeProfileActivityLabel">Attitude provile</string>
     <string name="no_gps_title">GPS not enabled</string>
     <string name="no_gps_message">GPS is not enabled. Please enable GPS at the settings menu.</string>
     <string name="no_gps_button">OK</string>
@@ -57,5 +49,10 @@
     <string name="climbInformationNotificationText">climb</string>
     <string name="sinkInformationNotificationTitle">sink</string>
     <string name="sinkInformationNotificationText">sink</string>
+    <string name="attitudeProfileChart_Title">Attitude provile</string>
+    <string name="attitudeProfileChart_XTitle">Time in seconds</string>
+    <string name="attitudeProfileChart_YTitle">Attitude in meters</string>
+    <string name="attitudeProfileChart_gndSeries">Ground</string>
+    <string name="attitudeProfileChart_attitudeProfileSeries">Attitude provile</string>
 
 </resources>
