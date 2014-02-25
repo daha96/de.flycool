@@ -1,5 +1,5 @@
-bin/
+bin/*
 #/libs
-doc/
-gen/
+doc/*
+gen/*
 *~
