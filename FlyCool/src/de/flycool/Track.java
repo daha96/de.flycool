@@ -50,8 +50,11 @@ public class Track implements Serializable {
 			this.longitude = location.getLongitude();
 			this.attitudeAboveMsl = attitudeAboveMsl;
 			this.elevation = elevation;
-			this.warnLevel = popup.warnLevel;
-			this.flyAction = popup.flyAction;
+
+			if (popup != null) {
+				this.warnLevel = popup.warnLevel;
+				this.flyAction = popup.flyAction;
+			}
 		}
 
 		public Date getTime() {
