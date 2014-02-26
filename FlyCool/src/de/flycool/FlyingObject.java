@@ -79,6 +79,21 @@ public class FlyingObject {
 			this.warnLevel = warnLevel;
 			this.flyAction = flyAction;
 		}
+
+		@Override
+		public boolean equals(Object o) {
+			
+			if (o instanceof Popup)
+			{
+				Popup popup = (Popup) o;
+				if (popup.flyAction.equals(flyAction) && popup.warnLevel.equals(warnLevel))
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+		}
 	}
 
 	SharedPreferences sharedPref;
