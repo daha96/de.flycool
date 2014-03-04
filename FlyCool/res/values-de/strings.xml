@@ -57,4 +57,7 @@
     <string name="action_saveTrack">Track speichern</string>
     <string name="send_to">Senden an</string>
 
+    <string name="pref_invalidInputTitle">Ungültige Eingabe</string>
+    <string name="pref_invalidInputMessage">Die Eingabe ist ungültig.</string>
+    
 </resources>

@@ -210,51 +210,7 @@ public class FlyingObject {
 	 */
 	Integer getSetting(WarnLevel warnLevel,
 			ReferenceAttitude referenceAttitude, MinMax minMax) {
-		String str = "";
-		/*
-		 * int minAltitudeGnd = Integer.parseInt(sharedPref.getString(
-		 * "pref_key_min_altitude_gnd", "50"));
-		 * minAltitudeGndTextView.setText("> " + String.format("%d",
-		 * minAltitudeGnd) + " m");
-		 */
-		if (warnLevel == WarnLevel.info) {
-			if (referenceAttitude == ReferenceAttitude.msl) {
-				if (minMax == MinMax.min) {
-					str = sharedPref.getString("pref_key_informations_msl_min",
-							"");
-				} else if (minMax == MinMax.max) {
-					str = sharedPref.getString("pref_key_informations_msl_max",
-							"");
-				}
-			} else if (referenceAttitude == ReferenceAttitude.gnd) {
-				if (minMax == MinMax.min) {
-					str = sharedPref.getString("pref_key_informations_gnd_min",
-							"");
-				} else if (minMax == MinMax.max) {
-					str = sharedPref.getString("pref_key_informations_gnd_max",
-							"");
-				}
-			}
-		} else if (warnLevel == WarnLevel.warn) {
-			if (referenceAttitude == ReferenceAttitude.msl) {
-				if (minMax == MinMax.min) {
-					str = sharedPref.getString("pref_key_warnings_msl_min", "");
-				} else if (minMax == MinMax.max) {
-					str = sharedPref.getString("pref_key_warnings_msl_max", "");
-				}
-			} else if (referenceAttitude == ReferenceAttitude.gnd) {
-				if (minMax == MinMax.min) {
-					str = sharedPref.getString("pref_key_warnings_gnd_min", "");
-				} else if (minMax == MinMax.max) {
-					str = sharedPref.getString("pref_key_warnings_gnd_max", "");
-				}
-			}
-		}
-
-		if (str == "")
-			return null;
-		else
-			return Integer.parseInt(str);
+		return SettingsFragment.getSetting(sharedPref, warnLevel, referenceAttitude, minMax);
 	}
 
 	public Popup getLastPopup() {
