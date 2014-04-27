@@ -1,4 +1,4 @@
-package de.flycool;
+﻿package de.flycool;
 
 import java.util.Date;
 
@@ -32,7 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 /**
- * Stellt die Hauptaktivität da, die alle Komponenten zusammenführt. Sie ist der
+ * Stellt die HauptaktivitÃ¤t da, die alle Komponenten zusammenfÃ¼hrt. Sie ist der
  * Einstiegspunkt der App
  * 
  * @author daniel
@@ -71,6 +71,7 @@ public class MainActivity extends Activity implements LocationListener,
 	Notification sinkWarningNotification;
 	Notification climbInformationNotification;
 	Notification sinkInformationNotification;
+	boolean notificationActive = false;
 
 	Track track = new Track();
 
@@ -83,7 +84,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Läd die Aktivität und verbindet den LocationListener
+	 * LÃ¤d die AktivitÃ¤t und verbindet den LocationListener
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +187,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Erstellt das Menü
+	 * Erstellt das MenÃ¼
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -196,7 +197,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Wird aufgerufen, wenn ein Menüeintrag ausgewählt wurde
+	 * Wird aufgerufen, wenn ein MenÃ¼eintrag ausgewÃ¤hlt wurde
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -261,7 +262,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Zeigt das Höhenprofil an
+	 * Zeigt das HÃ¶henprofil an
 	 */
 	void showAttitudeProfileActivity() {
 		Intent i = new Intent(this, AttitudeProfileActivity.class);
@@ -270,7 +271,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Wird aufgerufen, wenn neue Positionsdaten verfügbar sind und aktualisiert
+	 * Wird aufgerufen, wenn neue Positionsdaten verfÃ¼gbar sind und aktualisiert
 	 * die komplette App
 	 */
 	@Override
@@ -293,7 +294,7 @@ public class MainActivity extends Activity implements LocationListener,
 
 	/**
 	 * Wird aufgerufen, wenn eine neue Benachrichtigung vom FlyingObject
-	 * verfügbar ist und aktualisiert die Benachrichtigungen
+	 * verfÃ¼gbar ist und aktualisiert die Benachrichtigungen
 	 */
 	@Override
 	public void onFlyingObjectPopupChanged(Popup popup) {
@@ -311,7 +312,9 @@ public class MainActivity extends Activity implements LocationListener,
 			// Warnung
 			if (popup.getWarnLevel() == WarnLevel.warn) {
 				if (popup.getFlyAction() == FlyAction.climb) {
-					notificationManager.notify(0, climbWarningNotification);
+					if (!notificationActive) {
+						notificationManager.notify(0, climbWarningNotification);
+					}
 					enabled = true;
 					message = getResources().getString(
 							R.string.climbWarningNotificationTitle);
@@ -325,7 +328,9 @@ public class MainActivity extends Activity implements LocationListener,
 			// Info
 			else {
 				if (popup.getFlyAction() == FlyAction.climb) {
-					notificationManager.notify(2, climbInformationNotification);
+					if (!notificationActive) {
+						notificationManager.notify(2, climbInformationNotification);
+					}
 					enabled = true;
 					message = getResources().getString(
 							R.string.climbInformationNotificationTitle);
@@ -338,17 +343,22 @@ public class MainActivity extends Activity implements LocationListener,
 			}
 		}
 
-		if (enabled)
+		if (enabled && !this.notificationActive)
+		{
+			this.notificationActive = true;
 			warnFrame.setVisibility(View.VISIBLE);
+		}
 		else
+		{
+			this.notificationActive = false;
 			warnFrame.setVisibility(View.GONE);
+		}
 
 		warnMessage.setText(message);
-
 	}
 
 	/**
-	 * Aktualisiert die Höhe über Grund
+	 * Aktualisiert die HÃ¶he Ã¼ber Grund
 	 * 
 	 * @param gndElevation
 	 */
@@ -368,7 +378,7 @@ public class MainActivity extends Activity implements LocationListener,
 	}
 
 	/**
-	 * Aktualisiert die Höhe über dem Meeresspiegel
+	 * Aktualisiert die HÃ¶he Ã¼ber dem Meeresspiegel
 	 * 
 	 * @param altitudeMsl
 	 */
