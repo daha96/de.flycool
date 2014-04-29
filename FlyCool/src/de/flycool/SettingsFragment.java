@@ -30,18 +30,6 @@ public class SettingsFragment extends PreferenceFragment {
 
 		getPreferenceScreen().findPreference("pref_key_warnings_msl_min")
 				.setOnPreferenceChangeListener(onPreferenceChangeListener);
-
-		/*
-		 * () {
-		 * 
-		 * @Override public boolean onPreferenceChange(Preference preference,
-		 * Object newValue) { Boolean rtnval = true; if (Your_Test) { final
-		 * AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		 * builder.setTitle("Invalid Input");
-		 * builder.setMessage("Something's gone wrong...");
-		 * builder.setPositiveButton(android.R.string.ok, null); builder.show();
-		 * rtnval = false; } return rtnval; } });
-		 */
 	}
 
 	/**
@@ -55,13 +43,9 @@ public class SettingsFragment extends PreferenceFragment {
 	public static Integer getSetting(SharedPreferences sharedPref,
 			WarnLevel warnLevel, ReferenceAttitude referenceAttitude,
 			MinMax minMax) {
+
 		String str = "";
-		/*
-		 * int minAltitudeGnd = Integer.parseInt(sharedPref.getString(
-		 * "pref_key_min_altitude_gnd", "50"));
-		 * minAltitudeGndTextView.setText("> " + String.format("%d",
-		 * minAltitudeGnd) + " m");
-		 */
+
 		if (warnLevel == WarnLevel.info) {
 			if (referenceAttitude == ReferenceAttitude.msl) {
 				if (minMax == MinMax.min) {
@@ -122,7 +106,7 @@ public class SettingsFragment extends PreferenceFragment {
 				getActivity());
 		builder.setTitle(R.string.pref_invalidInputTitle);
 		builder.setMessage(R.string.pref_invalidInputMessage);
-		// TODO: Button Beschriftung!
+
 		builder.setPositiveButton(android.R.string.ok, null);
 		builder.show();
 		return false;
@@ -134,14 +118,13 @@ public class SettingsFragment extends PreferenceFragment {
 		public boolean onPreferenceChange(Preference preference, Object newValue) {
 
 			String prefKey = preference.getKey();
-			
+
 			// Wert löschen immer erlaubt
 			if (newValue == null || newValue == "")
 				return true;
 
 			int newVal = Integer.valueOf((String) newValue);
 
-			
 			if (prefKey.equals("pref_key_warnings_msl_min")) {
 				Integer val = getSetting(WarnLevel.warn, ReferenceAttitude.msl,
 						MinMax.max);
@@ -153,8 +136,7 @@ public class SettingsFragment extends PreferenceFragment {
 				if (val != null && newVal > val)
 					return showPreferenceValidationError();
 
-			}
-			else if (prefKey.equals("pref_key_warnings_msl_max")) {
+			} else if (prefKey.equals("pref_key_warnings_msl_max")) {
 				Integer val = getSetting(WarnLevel.warn, ReferenceAttitude.msl,
 						MinMax.min);
 				if (val != null && newVal < val)
@@ -164,8 +146,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.max);
 				if (val != null && newVal < val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_warnings_gnd_min")) {
+			} else if (prefKey.equals("pref_key_warnings_gnd_min")) {
 				Integer val = getSetting(WarnLevel.warn, ReferenceAttitude.gnd,
 						MinMax.max);
 				if (val != null && newVal > val)
@@ -175,8 +156,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.min);
 				if (val != null && newVal > val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_warnings_gnd_max")) {
+			} else if (prefKey.equals("pref_key_warnings_gnd_max")) {
 				Integer val = getSetting(WarnLevel.warn, ReferenceAttitude.gnd,
 						MinMax.min);
 				if (val != null && newVal < val)
@@ -186,8 +166,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.max);
 				if (val != null && newVal < val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_informations_msl_min")) {
+			} else if (prefKey.equals("pref_key_informations_msl_min")) {
 				Integer val = getSetting(WarnLevel.info, ReferenceAttitude.msl,
 						MinMax.max);
 				if (val != null && newVal > val)
@@ -197,8 +176,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.min);
 				if (val != null && newVal < val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_informations_msl_max")) {
+			} else if (prefKey.equals("pref_key_informations_msl_max")) {
 				Integer val = getSetting(WarnLevel.info, ReferenceAttitude.msl,
 						MinMax.min);
 				if (val != null && newVal < val)
@@ -208,8 +186,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.max);
 				if (val != null && newVal > val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_informations_gnd_min")) {
+			} else if (prefKey.equals("pref_key_informations_gnd_min")) {
 				Integer val = getSetting(WarnLevel.info, ReferenceAttitude.gnd,
 						MinMax.max);
 				if (val != null && newVal > val)
@@ -219,8 +196,7 @@ public class SettingsFragment extends PreferenceFragment {
 						MinMax.min);
 				if (val != null && newVal < val)
 					return showPreferenceValidationError();
-			}
-			else if (prefKey.equals("pref_key_informations_gnd_max")) {
+			} else if (prefKey.equals("pref_key_informations_gnd_max")) {
 				Integer val = getSetting(WarnLevel.info, ReferenceAttitude.gnd,
 						MinMax.min);
 				if (val != null && newVal < val)
@@ -231,7 +207,7 @@ public class SettingsFragment extends PreferenceFragment {
 				if (val != null && newVal > val)
 					return showPreferenceValidationError();
 			}
-			
+
 			return true;
 		}
 	};

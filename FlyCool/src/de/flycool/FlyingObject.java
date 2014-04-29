@@ -1,7 +1,5 @@
 package de.flycool;
 
-import java.io.Serializable;
-
 import android.content.SharedPreferences;
 
 /**
@@ -60,10 +58,6 @@ public class FlyingObject {
 	 */
 	class Popup {
 
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 2953664207628441090L;
 		WarnLevel warnLevel;
 		FlyAction flyAction;
 
@@ -82,16 +76,15 @@ public class FlyingObject {
 
 		@Override
 		public boolean equals(Object o) {
-			
-			if (o instanceof Popup)
-			{
+
+			if (o instanceof Popup) {
 				Popup popup = (Popup) o;
-				if (popup.flyAction.equals(flyAction) && popup.warnLevel.equals(warnLevel))
+				if (popup.flyAction.equals(flyAction)
+						&& popup.warnLevel.equals(warnLevel))
 					return true;
 				else
 					return false;
-			}
-			else
+			} else
 				return false;
 		}
 	}
@@ -210,7 +203,8 @@ public class FlyingObject {
 	 */
 	Integer getSetting(WarnLevel warnLevel,
 			ReferenceAttitude referenceAttitude, MinMax minMax) {
-		return SettingsFragment.getSetting(sharedPref, warnLevel, referenceAttitude, minMax);
+		return SettingsFragment.getSetting(sharedPref, warnLevel,
+				referenceAttitude, minMax);
 	}
 
 	public Popup getLastPopup() {
