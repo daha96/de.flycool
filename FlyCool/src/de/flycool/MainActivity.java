@@ -1,6 +1,11 @@
 ﻿package de.flycool;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import de.flycool.FlyingObject.FlyAction;
 import de.flycool.FlyingObject.Popup;
@@ -22,6 +27,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -221,44 +227,28 @@ public class MainActivity extends Activity implements LocationListener,
 	 * Speichert den Track ab
 	 */
 	void saveTrack() {
-		String file =
-				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-				+ "<kml xmlns= \"http://www.opengis.net/kml/2.2\">"
-				+ "  <Document>"
-				+ "    <name>Track</name>"
-				+ "    <description>FlyCool</description>"
-				+ "    <Style id=\"yellowLineGreenPoly\">"
-				+ "      <LineStyle>"
-				+ "        <color>7f00ffff</color>"
-				+ "        <width>4</width>"
-				+ "      </LineStyle>"
-				+ "      <PolyStyle>"
-				+ "        <color>7f00ff00</color>"
-				+ "      </PolyStyle>"
-				+ "    </Style>"
-				+ "    <Placemark>"
-				+ "      <name>Absolute Extruded</name>"
-				+ "      <description>Transparent green wall with yellow outlines</description>"
-				+ "      <styleUrl>#yellowLineGreenPoly</styleUrl>"
-				+ "      <LineString>" + "        <extrude>1</extrude>"
-				+ "        <tessellate>1</tessellate>"
-				+ "        <altitudeMode>absolute</altitudeMode>"
-				+ "        <coordinates>\n";
+		String file = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?><gpx xmlns=\"http://www.topografix.com/GPX/1/1\" version=\"1.1\" creator=\"de.flycool\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">"
+				+ "\n<metadata><name>FlyCool-Track</name><desc>FlyCool-Track</desc><author><name>FlyCool</name></author></metadata>"
+				+ "\n<trk><name>FlyCool-Track</name><desc>FlyCool-Track</desc>";
+		
+		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+		dfs.setDecimalSeparator('.');
+		NumberFormat nf = new DecimalFormat("###.##########", dfs);//NumberFormat.getNumberInstance(Locale.US);
 		
 		for (TrackEntry entry : track.getTrackEntries()) {
-			file = file + String.format("%f", entry.getLatitude()) + ", " + String.format("%f", entry.getLongitude()) + "\n";
+			file = file + 
+					"\n<trkpt lat=\"" + nf.format(entry.getLatitude()) + "\" lon=\"" + nf.format(entry.getLongitude()) + "\">" +
+					"<ele>" + nf.format(entry.getElevation()) + "</ele><time>" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(entry.getTime()) + "</time></trkpt>";
 		}
 
-		file = file +
-				"        </coordinates>" + "      </LineString>"
-				+ "    </Placemark>" + "  </Document>" + "</kml>";
+		file = file + "\n</trk></gpx>";
 		
 		
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_STREAM, file);
-		shareIntent.setType("application/vnd.google-earth.kml+xml");
-		startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.send_to)));
+		shareIntent.putExtra(Intent.EXTRA_TEXT,  file);
+		shareIntent.setType("application/x-gpx");
+		startActivity(shareIntent/*Intent.createChooser(shareIntent, getResources().getText(R.string.send_to))*/);
 	}
 
 	/**
